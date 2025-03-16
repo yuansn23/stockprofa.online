@@ -2,7 +2,7 @@
 <html lang="de">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
     <title>StockAnalyse Pro | Premium Aktienanalyse für deutsche Anleger</title>
     <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
@@ -360,11 +360,7 @@
     </style>
 </head>
 <body>
-    <!-- Floating notification icon -->
-    <div class="floating-icon" onclick="opensite()">
-        <i class="fas fa-comment-dots text-blue-600 text-2xl"></i>
-        <div class="notification-badge">1</div>
-    </div>
+    <!-- Removed floating icon as requested -->
 
     <!-- Hero Section -->
     <section class="hero-section">
@@ -773,9 +769,39 @@
             const stockNameEl = document.getElementById('stockName');
             const viewCountEl = document.getElementById('viewCount');
             const inputEl = document.getElementById(inputId);
-            const stockName = inputEl.value.trim() || 'Ihre Aktie';
+            const stockValue = inputEl.value.trim();
             
-            stockNameEl.textContent = stockName;
+            // Check if input is empty
+            if (!stockValue) {
+                inputEl.style.borderColor = '#e53e3e';
+                
+                // Show error message if not already there
+                if (!inputEl.nextElementSibling || !inputEl.nextElementSibling.classList.contains('input-error')) {
+                    const errorMsg = document.createElement('div');
+                    errorMsg.textContent = 'Bitte geben Sie Ihren Aktiencode oder Namen ein';
+                    errorMsg.className = 'text-red-600 text-sm mt-1 input-error';
+                    inputEl.parentNode.insertBefore(errorMsg, inputEl.nextSibling);
+                    
+                    // Remove error after 3 seconds
+                    setTimeout(() => {
+                        if (errorMsg.parentNode) {
+                            errorMsg.parentNode.removeChild(errorMsg);
+                            inputEl.style.borderColor = '#ddd';
+                        }
+                    }, 3000);
+                }
+                return;
+            }
+            
+            // Reset border color if it was red
+            inputEl.style.borderColor = '#ddd';
+            
+            // Remove error message if exists
+            if (inputEl.nextElementSibling && inputEl.nextElementSibling.classList.contains('input-error')) {
+                inputEl.parentNode.removeChild(inputEl.nextElementSibling);
+            }
+            
+            stockNameEl.textContent = stockValue;
             
             // Generate random view count between 2800 and 3200
             const viewCount = Math.floor(Math.random() * (3200 - 2800 + 1)) + 2800;
