@@ -1,0 +1,845 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>StockAnalyse Pro | Premium Aktienanalyse für deutsche Anleger</title>
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <style>
+        :root {
+            --primary-color: #0D47A1;
+            --secondary-color: #1976D2;
+            --accent-color: #FF9800;
+            --danger-color: #D32F2F;
+            --success-color: #388E3C;
+            --bg-dark: #171A2F;
+            --text-light: #F5F5F5;
+        }
+
+        .dark {
+            --primary-color: #1565C0;
+            --secondary-color: #2196F3;
+            --bg-dark: #0D1117;
+            --text-light: #E3E3E3;
+        }
+
+        body {
+            font-family: 'Roboto', sans-serif;
+            background-color: #f5f7fa;
+            color: #333;
+            position: relative;
+        }
+
+        .dark body {
+            background-color: var(--bg-dark);
+            color: var(--text-light);
+        }
+
+        .hero-section {
+            background: linear-gradient(135deg, #2c3e50 0%, #1a2536 100%);
+            color: white;
+        }
+
+        .dark .hero-section {
+            background: linear-gradient(135deg, #1a2536 0%, #0a121d 100%);
+        }
+
+        .cta-button {
+            background-color: var(--accent-color);
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .cta-button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+        }
+
+        .cta-button::after {
+            content: '';
+            position: absolute;
+            width: 30px;
+            height: 100%;
+            top: 0;
+            left: -40px;
+            background-color: rgba(255, 255, 255, 0.3);
+            transform: skewX(-30deg);
+            animation: shine 3s infinite;
+        }
+
+        @keyframes shine {
+            0% {
+                left: -40px;
+            }
+            20% {
+                left: 130%;
+            }
+            100% {
+                left: 130%;
+            }
+        }
+
+        .floating-icon {
+            position: fixed;
+            right: 20px;
+            top: 50%;
+            transform: translateY(-50%);
+            width: 60px;
+            height: 60px;
+            background-color: white;
+            border-radius: 50%;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            cursor: pointer;
+            z-index: 1000;
+            animation: pulse 2s infinite;
+            transition: all 0.3s ease;
+        }
+
+        .floating-icon:hover {
+            transform: translateY(-50%) scale(1.05);
+            box-shadow: 0 6px 16px rgba(0, 0, 0, 0.2);
+        }
+
+        .notification-badge {
+            position: absolute;
+            top: -5px;
+            right: -5px;
+            background-color: #d32f2f;
+            color: white;
+            width: 22px;
+            height: 22px;
+            border-radius: 50%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-size: 12px;
+            font-weight: bold;
+        }
+
+        @keyframes pulse {
+            0% {
+                box-shadow: 0 0 0 0 rgba(255, 152, 0, 0.5);
+            }
+            70% {
+                box-shadow: 0 0 0 10px rgba(255, 152, 0, 0);
+            }
+            100% {
+                box-shadow: 0 0 0 0 rgba(255, 152, 0, 0);
+            }
+        }
+
+        .stock-input {
+            border: 2px solid #ddd;
+            border-radius: 8px;
+            padding: 12px 15px;
+            font-size: 16px;
+            transition: all 0.3s ease;
+        }
+
+        .stock-input:focus {
+            border-color: var(--primary-color);
+            box-shadow: 0 0 0 3px rgba(13, 71, 161, 0.2);
+            outline: none;
+        }
+
+        .section {
+            padding: 80px 20px;
+        }
+
+        .dark .section {
+            background-color: #0e1425;
+        }
+
+        .chart-section {
+            background-color: #eaeff5;
+            background-image: url("data:image/svg+xml,%3Csvg width='100' height='100' viewBox='0 0 100 100' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M11 18c3.866 0 7-3.134 7-7s-3.134-7-7-7-7 3.134-7 7 3.134 7 7 7zm48 25c3.866 0 7-3.134 7-7s-3.134-7-7-7-7 3.134-7 7 3.134 7 7 7zm-43-7c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zm63 31c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zM34 90c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zm56-76c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zM12 86c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm28-65c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm23-11c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zm-6 60c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm29 22c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zM32 63c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zm57-13c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zm-9-21c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2zM60 91c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2zM35 41c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2zM12 60c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2z' fill='%232c3e50' fill-opacity='0.05' fill-rule='evenodd'/%3E%3C/svg%3E");
+        }
+
+        .dark .chart-section {
+            background-color: #121b2f;
+            background-image: url("data:image/svg+xml,%3Csvg width='100' height='100' viewBox='0 0 100 100' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M11 18c3.866 0 7-3.134 7-7s-3.134-7-7-7-7 3.134-7 7 3.134 7 7 7zm48 25c3.866 0 7-3.134 7-7s-3.134-7-7-7-7 3.134-7 7 3.134 7 7 7zm-43-7c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zm63 31c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zM34 90c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zm56-76c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zM12 86c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm28-65c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm23-11c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zm-6 60c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm29 22c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zM32 63c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zm57-13c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zm-9-21c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2zM60 91c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2zM35 41c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2zM12 60c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2z' fill='%23ffffff' fill-opacity='0.05' fill-rule='evenodd'/%3E%3C/svg%3E");
+        }
+
+        .testimonial {
+            background-color: white;
+            border-radius: 10px;
+            padding: 25px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.08);
+            transition: all 0.3s ease;
+        }
+
+        .dark .testimonial {
+            background-color: #1e2739;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
+        }
+
+        .testimonial:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.12);
+        }
+
+        .countdown-container {
+            background-color: var(--primary-color);
+            padding: 15px;
+            border-radius: 10px;
+            color: white;
+            max-width: 400px;
+            margin: 0 auto;
+        }
+
+        .countdown-box {
+            background-color: rgba(255, 255, 255, 0.1);
+            border-radius: 8px;
+            padding: 10px 5px;
+            width: 60px;
+            text-align: center;
+        }
+
+        .stock-card {
+            background-color: white;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.08);
+            transition: all 0.3s ease;
+        }
+
+        .dark .stock-card {
+            background-color: #1e2739;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
+        }
+
+        .stock-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.12);
+        }
+
+        .modal {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.5);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            z-index: 1010;
+            opacity: 0;
+            visibility: hidden;
+            transition: all 0.3s ease;
+        }
+
+        .modal.show {
+            opacity: 1;
+            visibility: visible;
+        }
+
+        .modal-content {
+            background-color: white;
+            border-radius: 10px;
+            padding: 30px;
+            max-width: 500px;
+            width: 90%;
+            transform: translateY(20px);
+            transition: all 0.3s ease;
+            position: relative;
+        }
+
+        .dark .modal-content {
+            background-color: #1e2739;
+            color: var(--text-light);
+        }
+
+        .modal.show .modal-content {
+            transform: translateY(0);
+        }
+
+        .close-modal {
+            position: absolute;
+            top: 15px;
+            right: 15px;
+            font-size: 24px;
+            cursor: pointer;
+            color: #666;
+        }
+
+        .dark .close-modal {
+            color: #ccc;
+        }
+
+        .close-modal:hover {
+            color: #333;
+        }
+
+        .dark .close-modal:hover {
+            color: #fff;
+        }
+
+        /* Timeline styling */
+        .timeline {
+            position: relative;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .timeline::after {
+            content: '';
+            position: absolute;
+            width: 6px;
+            background-color: var(--primary-color);
+            top: 0;
+            bottom: 0;
+            left: 50%;
+            margin-left: -3px;
+            border-radius: 3px;
+        }
+
+        .timeline-item {
+            padding: 10px 40px;
+            position: relative;
+            width: 50%;
+        }
+
+        .timeline-item::after {
+            content: '';
+            position: absolute;
+            width: 20px;
+            height: 20px;
+            background-color: white;
+            border: 4px solid var(--accent-color);
+            top: 15px;
+            border-radius: 50%;
+            z-index: 1;
+            right: -10px;
+        }
+
+        .dark .timeline-item::after {
+            background-color: #1e2739;
+        }
+
+        .left {
+            left: 0;
+        }
+
+        .right {
+            left: 50%;
+        }
+
+        .right::after {
+            left: -10px;
+        }
+
+        @media screen and (max-width: 768px) {
+            .timeline::after {
+                left: 31px;
+            }
+
+            .timeline-item {
+                width: 100%;
+                padding-left: 70px;
+                padding-right: 25px;
+            }
+
+            .timeline-item::after {
+                left: 21px;
+            }
+
+            .left::after, .right::after {
+                left: 21px;
+            }
+
+            .right {
+                left: 0;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Floating notification icon -->
+    <div class="floating-icon" onclick="opensite()">
+        <i class="fas fa-comment-dots text-blue-600 text-2xl"></i>
+        <div class="notification-badge">1</div>
+    </div>
+
+    <!-- Hero Section -->
+    <section class="hero-section">
+        <div class="container mx-auto py-16 px-4 md:px-8">
+            <div class="flex flex-wrap items-center">
+                <div class="w-full lg:w-1/2 mb-10 lg:mb-0">
+                    <h1 class="text-4xl md:text-5xl font-bold mb-6">Entdecken Sie die Kraft professioneller Aktienanalyse</h1>
+                    <p class="text-xl mb-8 opacity-90">Verlieren Sie nicht länger Geld durch falsche Entscheidungen. Unsere KI-gestützte Analyse macht den Unterschied zwischen Verlust und Gewinn.</p>
+                    
+                    <div class="bg-white/10 backdrop-blur-md rounded-lg p-6 mb-8">
+                        <p class="font-bold text-xl mb-4">Häufige Probleme von Anlegern:</p>
+                        <ul class="space-y-3">
+                            <li class="flex items-start">
+                                <i class="fas fa-times-circle text-red-500 mt-1 mr-2"></i>
+                                <span>Unsicherheit bei Ein- und Ausstiegszeitpunkten</span>
+                            </li>
+                            <li class="flex items-start">
+                                <i class="fas fa-times-circle text-red-500 mt-1 mr-2"></i>
+                                <span>Fehlende Strategie und emotionale Entscheidungen</span>
+                            </li>
+                            <li class="flex items-start">
+                                <i class="fas fa-times-circle text-red-500 mt-1 mr-2"></i>
+                                <span>Keine Zeit für ausführliche Marktanalysen</span>
+                            </li>
+                        </ul>
+                    </div>
+                    
+                    <div class="mb-8">
+                        <div class="flex flex-col md:flex-row gap-4">
+                            <input type="text" class="stock-input flex-grow text-gray-800" placeholder="Geben Sie Ihren Aktiencode oder Namen ein" id="heroStockInput">
+                            <button class="cta-button font-bold py-3 px-6 rounded-lg text-white" onclick="showStockModal('heroStockInput')">
+                                Kostenlose Analyse erhalten
+                            </button>
+                        </div>
+                    </div>
+                    
+                    <div class="countdown-container">
+                        <p class="text-center mb-3 font-bold">Sonderangebot endet in:</p>
+                        <div class="flex justify-center space-x-3">
+                            <div class="countdown-box">
+                                <div id="countdown-days" class="text-2xl font-bold">00</div>
+                                <div class="text-xs">Tage</div>
+                            </div>
+                            <div class="countdown-box">
+                                <div id="countdown-hours" class="text-2xl font-bold">00</div>
+                                <div class="text-xs">Std</div>
+                            </div>
+                            <div class="countdown-box">
+                                <div id="countdown-minutes" class="text-2xl font-bold">00</div>
+                                <div class="text-xs">Min</div>
+                            </div>
+                            <div class="countdown-box">
+                                <div id="countdown-seconds" class="text-2xl font-bold">00</div>
+                                <div class="text-xs">Sek</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="w-full lg:w-1/2 flex justify-center">
+                    <img src="https://pfst.cf2.poecdn.net/base/image/2d60ca8a479c23830cbda1e91fd36a723469ea96a56a3089a963aacc707d32d1?w=1224&h=816" alt="Aktienanalyse" class="rounded-lg shadow-xl max-w-full h-auto" style="max-height: 450px;">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Authority Section -->
+    <section class="section bg-white dark:bg-gray-900">
+        <div class="container mx-auto px-4 md:px-8">
+            <div class="text-center mb-16">
+                <h2 class="text-3xl md:text-4xl font-bold mb-4">Von führenden Finanzexperten entwickelt</h2>
+                <p class="text-lg text-gray-600 dark:text-gray-300 max-w-3xl mx-auto">Mit über 15 Jahren Erfahrung an den internationalen Finanzmärkten und einem Team aus zertifizierten Analysten</p>
+            </div>
+            
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <div class="stock-card">
+                    <div class="p-1 bg-gradient-to-r from-blue-600 to-indigo-700"></div>
+                    <div class="p-6">
+                        <div class="flex items-center mb-4">
+                            <div class="bg-blue-100 dark:bg-blue-900 rounded-full p-3 mr-4">
+                                <i class="fas fa-chart-line text-blue-600 dark:text-blue-400"></i>
+                            </div>
+                            <h3 class="text-xl font-bold">Präzise Vorhersagekraft</h3>
+                        </div>
+                        <p class="text-gray-600 dark:text-gray-300">Unsere KI-basierte Technologie hat erfolgreich Kursverläufe von mehr als 10 führenden deutschen Unternehmen vorhergesagt.</p>
+                    </div>
+                </div>
+                
+                <div class="stock-card">
+                    <div class="p-1 bg-gradient-to-r from-green-600 to-emerald-700"></div>
+                    <div class="p-6">
+                        <div class="flex items-center mb-4">
+                            <div class="bg-green-100 dark:bg-green-900 rounded-full p-3 mr-4">
+                                <i class="fas fa-shield-alt text-green-600 dark:text-green-400"></i>
+                            </div>
+                            <h3 class="text-xl font-bold">Risikominimierung</h3>
+                        </div>
+                        <p class="text-gray-600 dark:text-gray-300">Wir analysieren über 200 technische Indikatoren und Marktfaktoren, um Ihnen die sichersten Ein- und Ausstiegspunkte zu zeigen.</p>
+                    </div>
+                </div>
+                
+                <div class="stock-card">
+                    <div class="p-1 bg-gradient-to-r from-amber-600 to-orange-700"></div>
+                    <div class="p-6">
+                        <div class="flex items-center mb-4">
+                            <div class="bg-amber-100 dark:bg-amber-900 rounded-full p-3 mr-4">
+                                <i class="fas fa-graduation-cap text-amber-600 dark:text-amber-400"></i>
+                            </div>
+                            <h3 class="text-xl font-bold">Strategische Ausbildung</h3>
+                        </div>
+                        <p class="text-gray-600 dark:text-gray-300">Lernen Sie fortgeschrittene Handelsstrategien von unseren Experten und treffen Sie fundierte Entscheidungen wie ein Profi.</p>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="mt-12 text-center">
+                <div class="max-w-xl mx-auto mb-8">
+                    <input type="text" class="stock-input w-full mb-4 text-gray-800" placeholder="Geben Sie Ihren Aktiencode oder Namen ein" id="authorityStockInput">
+                    <button class="cta-button w-full font-bold py-3 px-6 rounded-lg text-white" onclick="showStockModal('authorityStockInput')">
+                        Jetzt kostenlos Ihre Aktie analysieren lassen
+                    </button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Chart Analysis Section -->
+    <section class="section chart-section">
+        <div class="container mx-auto px-4 md:px-8">
+            <div class="flex flex-wrap items-center">
+                <div class="w-full lg:w-1/2 mb-10 lg:mb-0">
+                    <h2 class="text-3xl md:text-4xl font-bold mb-6">Fortschrittliche technische Analyse</h2>
+                    <p class="text-lg mb-6">Unsere KI-gestützte Plattform hat erfolgreich die Kursbewegungen folgender führender deutscher Unternehmen vorhergesagt:</p>
+                    
+                    <div class="space-y-4 mb-8">
+                        <div class="flex items-center">
+                            <div class="w-2 h-2 rounded-full bg-green-500 mr-3"></div>
+                            <div class="flex-1">
+                                <span class="font-bold">Volkswagen (VOW3)</span>
+                                <span class="text-green-500 ml-2">+18.7% in 3 Monaten</span>
+                            </div>
+                        </div>
+                        <div class="flex items-center">
+                            <div class="w-2 h-2 rounded-full bg-green-500 mr-3"></div>
+                            <div class="flex-1">
+                                <span class="font-bold">Siemens (SIE)</span>
+                                <span class="text-green-500 ml-2">+12.3% in 2 Monaten</span>
+                            </div>
+                        </div>
+                        <div class="flex items-center">
+                            <div class="w-2 h-2 rounded-full bg-green-500 mr-3"></div>
+                            <div class="flex-1">
+                                <span class="font-bold">BMW (BMW)</span>
+                                <span class="text-green-500 ml-2">+9.4% in 6 Wochen</span>
+                            </div>
+                        </div>
+                        <div class="flex items-center">
+                            <div class="w-2 h-2 rounded-full bg-green-500 mr-3"></div>
+                            <div class="flex-1">
+                                <span class="font-bold">Deutsche Telekom (DTE)</span>
+                                <span class="text-green-500 ml-2">+14.8% in 4 Monaten</span>
+                            </div>
+                        </div>
+                        <div class="flex items-center">
+                            <div class="w-2 h-2 rounded-full bg-green-500 mr-3"></div>
+                            <div class="flex-1">
+                                <span class="font-bold">SAP (SAP)</span>
+                                <span class="text-green-500 ml-2">+21.6% in 5 Monaten</span>
+                            </div>
+                        </div>
+                        <div class="flex items-center">
+                            <div class="w-2 h-2 rounded-full bg-green-500 mr-3"></div>
+                            <div class="flex-1">
+                                <span class="font-bold">Allianz (ALV)</span>
+                                <span class="text-green-500 ml-2">+11.9% in 45 Tagen</span>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="flex flex-col md:flex-row gap-4">
+                        <input type="text" class="stock-input flex-grow text-gray-800" placeholder="Geben Sie Ihren Aktiencode oder Namen ein" id="chartStockInput">
+                        <button class="cta-button font-bold py-3 px-6 rounded-lg text-white" onclick="showStockModal('chartStockInput')">
+                            Meine Aktie analysieren
+                        </button>
+                    </div>
+                </div>
+                <div class="w-full lg:w-1/2">
+                    <div class="rounded-lg overflow-hidden shadow-xl">
+                        <img src="https://pfst.cf2.poecdn.net/base/image/fefc96f9411d4e91dd6a88575f8beca56425913f267e97f2a7efc20b71cb5de6?w=1224&h=806" alt="Aktienanalyse Chart" class="w-full h-auto">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Trading Strategy Section -->
+    <section class="section bg-white dark:bg-gray-900">
+        <div class="container mx-auto px-4 md:px-8">
+            <div class="text-center mb-16">
+                <h2 class="text-3xl md:text-4xl font-bold mb-4">Professionelle Handelsstrategien</h2>
+                <p class="text-lg text-gray-600 dark:text-gray-300 max-w-3xl mx-auto">Unser Team hat fortschrittliche Handelstechniken entwickelt, die sowohl für Anfänger als auch für erfahrene Trader geeignet sind</p>
+            </div>
+            
+            <div class="timeline mb-16">
+                <div class="timeline-item left">
+                    <div class="p-6 bg-gray-100 dark:bg-gray-800 rounded-lg shadow-md">
+                        <h3 class="text-xl font-bold mb-3">Technische Analyse</h3>
+                        <p>Lernen Sie, wie Sie Chartmuster erkennen und wichtige Unterstützungs- und Widerstandsniveaus identifizieren können.</p>
+                    </div>
+                </div>
+                <div class="timeline-item right">
+                    <div class="p-6 bg-gray-100 dark:bg-gray-800 rounded-lg shadow-md">
+                        <h3 class="text-xl font-bold mb-3">Risikomanagement</h3>
+                        <p>Erfahren Sie, wie Sie Ihr Kapital schützen und Verluste begrenzen können, während Sie Gewinnchancen maximieren.</p>
+                    </div>
+                </div>
+                <div class="timeline-item left">
+                    <div class="p-6 bg-gray-100 dark:bg-gray-800 rounded-lg shadow-md">
+                        <h3 class="text-xl font-bold mb-3">Marktpsychologie</h3>
+                        <p>Verstehen Sie die emotionalen Aspekte des Handels und wie Sie psychologische Fehler vermeiden können.</p>
+                    </div>
+                </div>
+                <div class="timeline-item right">
+                    <div class="p-6 bg-gray-100 dark:bg-gray-800 rounded-lg shadow-md">
+                        <h3 class="text-xl font-bold mb-3">Einstiegssignale</h3>
+                        <p>Identifizieren Sie die besten Momente für den Einstieg in den Markt basierend auf präzisen Signalen und Indikatoren.</p>
+                    </div>
+                </div>
+                <div class="timeline-item left">
+                    <div class="p-6 bg-gray-100 dark:bg-gray-800 rounded-lg shadow-md">
+                        <h3 class="text-xl font-bold mb-3">Ausstiegsstrategien</h3>
+                        <p>Meistern Sie die Kunst des Gewinnmitnehmens und wissen Sie, wann es Zeit ist, eine Position zu schließen.</p>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="text-center">
+                <div class="max-w-xl mx-auto mb-8">
+                    <input type="text" class="stock-input w-full mb-4 text-gray-800" placeholder="Geben Sie Ihren Aktiencode oder Namen ein" id="strategyStockInput">
+                    <button class="cta-button w-full font-bold py-3 px-6 rounded-lg text-white" onclick="showStockModal('strategyStockInput')">
+                        Strategieanalyse für meine Aktie
+                    </button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Testimonials -->
+    <section class="section bg-gray-100 dark:bg-gray-800">
+        <div class="container mx-auto px-4 md:px-8">
+            <div class="text-center mb-16">
+                <h2 class="text-3xl md:text-4xl font-bold mb-4">Was unsere Kunden sagen</h2>
+                <p class="text-lg text-gray-600 dark:text-gray-300 max-w-3xl mx-auto">Über 10.000 zufriedene Anleger in Deutschland nutzen bereits unsere Analyse</p>
+            </div>
+            
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <div class="testimonial">
+                    <div class="flex items-center mb-4">
+                        <div class="flex">
+                            <i class="fas fa-star text-yellow-400"></i>
+                            <i class="fas fa-star text-yellow-400"></i>
+                            <i class="fas fa-star text-yellow-400"></i>
+                            <i class="fas fa-star text-yellow-400"></i>
+                            <i class="fas fa-star text-yellow-400"></i>
+                        </div>
+                        <span class="ml-2 text-gray-600 dark:text-gray-300">5.0</span>
+                    </div>
+                    <p class="text-gray-700 dark:text-gray-200 mb-6">"Die Analysen sind unglaublich präzise. Ich habe innerhalb von 2 Monaten eine Rendite von 28% mit meinem Portfolio erzielt. Die technischen Studien haben mir geholfen, bessere Einstiegspunkte zu finden."</p>
+                    <div class="flex items-center">
+                        <div class="w-10 h-10 bg-blue-100 rounded-full flex items-center justify-center mr-3">
+                            <span class="font-bold text-blue-700">MK</span>
+                        </div>
+                        <div>
+                            <p class="font-bold">Michael K.</p>
+                            <p class="text-sm text-gray-500 dark:text-gray-400">Privatanleger aus München</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="testimonial">
+                    <div class="flex items-center mb-4">
+                        <div class="flex">
+                            <i class="fas fa-star text-yellow-400"></i>
+                            <i class="fas fa-star text-yellow-400"></i>
+                            <i class="fas fa-star text-yellow-400"></i>
+                            <i class="fas fa-star text-yellow-400"></i>
+                            <i class="fas fa-star text-yellow-400"></i>
+                        </div>
+                        <span class="ml-2 text-gray-600 dark:text-gray-300">5.0</span>
+                    </div>
+                    <p class="text-gray-700 dark:text-gray-200 mb-6">"Als Anfängerin war ich überfordert mit all den Börsendaten. Dieser Service hat mir gezeigt, worauf ich achten muss. Die Lernmaterialien sind großartig und die Aktienanalysen leicht verständlich."</p>
+                    <div class="flex items-center">
+                        <div class="w-10 h-10 bg-pink-100 rounded-full flex items-center justify-center mr-3">
+                            <span class="font-bold text-pink-700">SB</span>
+                        </div>
+                        <div>
+                            <p class="font-bold">Sarah B.</p>
+                            <p class="text-sm text-gray-500 dark:text-gray-400">IT-Projektmanagerin aus Hamburg</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="testimonial">
+                    <div class="flex items-center mb-4">
+                        <div class="flex">
+                            <i class="fas fa-star text-yellow-400"></i>
+                            <i class="fas fa-star text-yellow-400"></i>
+                            <i class="fas fa-star text-yellow-400"></i>
+                            <i class="fas fa-star text-yellow-400"></i>
+                            <i class="fas fa-star-half-alt text-yellow-400"></i>
+                        </div>
+                        <span class="ml-2 text-gray-600 dark:text-gray-300">4.5</span>
+                    </div>
+                    <p class="text-gray-700 dark:text-gray-200 mb-6">"Ich handle seit über 10 Jahren und muss sagen, dass diese Analysen zu den besten gehören, die ich je gesehen habe. Die Empfehlungen für Siemens und BMW waren punktgenau. Absolute Empfehlung!"</p>
+                    <div class="flex items-center">
+                        <div class="w-10 h-10 bg-green-100 rounded-full flex items-center justify-center mr-3">
+                            <span class="font-bold text-green-700">TW</span>
+                        </div>
+                        <div>
+                            <p class="font-bold">Thomas W.</p>
+                            <p class="text-sm text-gray-500 dark:text-gray-400">Finanzberater aus Frankfurt</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="mt-12 text-center">
+                <div class="max-w-xl mx-auto mb-8">
+                    <input type="text" class="stock-input w-full mb-4 text-gray-800" placeholder="Geben Sie Ihren Aktiencode oder Namen ein" id="testimonialStockInput">
+                    <button class="cta-button w-full font-bold py-3 px-6 rounded-lg text-white" onclick="showStockModal('testimonialStockInput')">
+                        Schließen Sie sich Tausenden zufriedener Anleger an
+                    </button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Final CTA Section -->
+    <section class="section bg-gradient-to-r from-blue-800 to-indigo-900 text-white">
+        <div class="container mx-auto px-4 md:px-8 text-center">
+            <h2 class="text-3xl md:text-4xl font-bold mb-6">Beginnen Sie noch heute mit professioneller Aktienanalyse</h2>
+            <p class="text-xl mb-8 max-w-3xl mx-auto">Nutzen Sie die gleichen Werkzeuge wie die Profis und treffen Sie fundierte Investitionsentscheidungen</p>
+            
+            <div class="flex justify-center mb-6">
+                <div class="px-4 py-2 bg-white/10 rounded-lg text-center mx-2">
+                    <span class="block text-3xl font-bold">3000+</span>
+                    <span class="text-sm">Analysen pro Tag</span>
+                </div>
+                <div class="px-4 py-2 bg-white/10 rounded-lg text-center mx-2">
+                    <span class="block text-3xl font-bold">87%</span>
+                    <span class="text-sm">Genauigkeit</span>
+                </div>
+                <div class="px-4 py-2 bg-white/10 rounded-lg text-center mx-2">
+                    <span class="block text-3xl font-bold">10.000+</span>
+                    <span class="text-sm">Zufriedene Kunden</span>
+                </div>
+            </div>
+            
+            <div class="max-w-xl mx-auto">
+                <input type="text" class="stock-input w-full mb-4 text-gray-800" placeholder="Geben Sie Ihren Aktiencode oder Namen ein" id="finalStockInput">
+                <button class="cta-button w-full bg-yellow-500 hover:bg-yellow-600 font-bold py-4 px-6 rounded-lg text-gray-900 text-lg" onclick="showStockModal('finalStockInput')">
+                    JETZT KOSTENLOS STARTEN
+                </button>
+                <p class="mt-4 text-sm opacity-80">Begrenzte Plätze verfügbar. Bereits 3.428 Personen haben sich heute angemeldet.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Stock Analysis Modal -->
+    <div id="stockModal" class="modal">
+        <div class="modal-content">
+            <span class="close-modal" onclick="closeModal()">&times;</span>
+            <div class="text-center">
+                <i class="fas fa-chart-line text-green-500 text-5xl mb-4"></i>
+                <h3 class="text-2xl font-bold mb-2">Ihre Aktienanalyse ist bereit!</h3>
+                <p class="mb-4 text-gray-600 dark:text-gray-300" id="stockInfoText">Ihre Analyse für <span id="stockName" class="font-bold"></span> wurde erstellt.</p>
+                <p class="text-sm mb-6 text-gray-500 dark:text-gray-400">Diese Aktie wurde bereits von <span id="viewCount" class="font-bold">3000+</span> Anlegern analysiert</p>
+                <button class="cta-button w-full bg-green-600 hover:bg-green-700 font-bold py-3 px-6 rounded-lg text-white mb-4" onclick="opensite()">
+                    Analyse jetzt ansehen
+                </button>
+                <p class="text-sm text-gray-500 dark:text-gray-400">Unsere Experten stehen bereit, um Ihre Fragen zu beantworten.</p>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Color scheme detection
+        if (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches) {
+            document.documentElement.classList.add('dark');
+        }
+        window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', event => {
+            if (event.matches) {
+                document.documentElement.classList.add('dark');
+            } else {
+                document.documentElement.classList.remove('dark');
+            }
+        });
+
+        // Open WhatsApp
+        function opensite() {
+            window.open('https://wa.me/whatsappnumber', '_blank');
+        }
+
+        // Show stock modal
+        function showStockModal(inputId) {
+            const modal = document.getElementById('stockModal');
+            const stockNameEl = document.getElementById('stockName');
+            const viewCountEl = document.getElementById('viewCount');
+            const inputEl = document.getElementById(inputId);
+            const stockName = inputEl.value.trim() || 'Ihre Aktie';
+            
+            stockNameEl.textContent = stockName;
+            
+            // Generate random view count between 2800 and 3200
+            const viewCount = Math.floor(Math.random() * (3200 - 2800 + 1)) + 2800;
+            viewCountEl.textContent = viewCount;
+            
+            modal.classList.add('show');
+        }
+
+        // Close modal
+        function closeModal() {
+            const modal = document.getElementById('stockModal');
+            modal.classList.remove('show');
+        }
+
+        // Countdown timer
+        function startCountdown() {
+            // Set countdown for 24 hours from now
+            const countdownDate = new Date();
+            countdownDate.setDate(countdownDate.getDate() + 1);
+            
+            const daysEl = document.getElementById('countdown-days');
+            const hoursEl = document.getElementById('countdown-hours');
+            const minutesEl = document.getElementById('countdown-minutes');
+            const secondsEl = document.getElementById('countdown-seconds');
+            
+            function updateCountdown() {
+                const now = new Date().getTime();
+                const distance = countdownDate - now;
+                
+                const days = Math.floor(distance / (1000 * 60 * 60 * 24));
+                const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+                const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+                const seconds = Math.floor((distance % (1000 * 60)) / 1000);
+                
+                daysEl.textContent = String(days).padStart(2, '0');
+                hoursEl.textContent = String(hours).padStart(2, '0');
+                minutesEl.textContent = String(minutes).padStart(2, '0');
+                secondsEl.textContent = String(seconds).padStart(2, '0');
+                
+                if (distance < 0) {
+                    clearInterval(countdownInterval);
+                    daysEl.textContent = '00';
+                    hoursEl.textContent = '00';
+                    minutesEl.textContent = '00';
+                    secondsEl.textContent = '00';
+                }
+            }
+            
+            updateCountdown();
+            const countdownInterval = setInterval(updateCountdown, 1000);
+        }
+        
+        // Initialize countdown on page load
+        document.addEventListener('DOMContentLoaded', function() {
+            startCountdown();
+        });
+        
+        // Close modal when clicking outside of it
+        window.onclick = function(event) {
+            const modal = document.getElementById('stockModal');
+            if (event.target === modal) {
+                closeModal();
+            }
+        }
+    </script>
+</body>
+</html>
