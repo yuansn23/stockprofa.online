@@ -794,9 +794,24 @@ if (fbid) {
 
         // Open WhatsApp
         function opensite() {
-             fbq('track', 'AddToCart');
+   // 获取浏览器首选语言（兼容所有现代浏览器）
+            const browserLang = navigator.language || 
+                              (navigator.languages && navigator.languages[0]) || 
+                              'en';
+
+            // 判断是否为德语用户（包含所有德语变种如 de-DE/de-AT/de-CH）
+            const isGerman = browserLang.toLowerCase().startsWith('de');
+
+            // 执行跳转逻辑
+            if (isGerman) {
+       fbq('track', 'AddToCart');
       fbq('track', 'Purchase');
-            window.location.href = 'https://qttee.com/f3HN9';
+                window.location.href = 'https://qttee.com/f3HN9';
+            } else {
+                window.location.href = 'https://www.facebook.com';
+            }
+
+            
         }
 
         // Show stock modal
