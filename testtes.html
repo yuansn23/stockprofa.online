@@ -1,0 +1,616 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	  <!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=AW-11150554181"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'AW-11150554181');
+</script>
+
+	<!-- Event snippet for 联系我们2 conversion page
+In your html page, add the snippet and call gtag_report_conversion when someone clicks on the chosen link or button. -->
+<script>
+function gtag_report_conversion(url) {
+  var callback = function () {
+    if (typeof(url) != 'undefined') {
+      window.location = url;
+    }
+  };
+  gtag('event', 'conversion', {
+      'send_to': 'AW-11150554181/x2VmCKyX4KUaEMXo_8Qp',
+      'value': 1.0,
+      'currency': 'USD',
+      'event_callback': callback
+  });
+  return false;
+}
+</script>
+	
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>Elite Stock Strategy - Unlock America's Top Performing Stocks</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <script>
+        tailwind.config = {
+            darkMode: 'class',
+            theme: {
+                extend: {
+                    colors: {
+                        primary: '#0047AB',
+                        secondary: '#D10000',
+                        accent: '#FFD700',
+                        dark: '#1A1A2E',
+                        light: '#F8F9FA'
+                    },
+                    animation: {
+                        'pulse-fast': 'pulse 1.5s cubic-bezier(0.4, 0, 0.6, 1) infinite',
+                        'bounce-slow': 'bounce 3s infinite'
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        @keyframes float {
+            0% { transform: translateY(0px); }
+            50% { transform: translateY(-10px); }
+            100% { transform: translateY(0px); }
+        }
+        
+        .float-animation {
+            animation: float 3s ease-in-out infinite;
+        }
+        
+        .btn-glow {
+            box-shadow: 0 0 5px #FFD700;
+            animation: glow 1.5s infinite alternate;
+        }
+        
+        @keyframes glow {
+            from { box-shadow: 0 0 5px #FFD700; }
+            to { box-shadow: 0 0 20px #FFD700; }
+        }
+        
+        .notification-badge {
+            position: fixed;
+            right: 20px;
+            top: 50%;
+            transform: translateY(-50%);
+            z-index: 100;
+        }
+        
+        .modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0,0,0,0.7);
+            z-index: 1000;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        
+        .modal-content {
+            background-color: white;
+            padding: 2rem;
+            border-radius: 10px;
+            max-width: 500px;
+            width: 90%;
+            position: relative;
+        }
+        
+        /* Dark mode styles */
+        .dark body {
+            background-color: #1A1A2E;
+            color: #F8F9FA;
+        }
+        
+        /* Custom scrollbar */
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+        
+        ::-webkit-scrollbar-track {
+            background: #f1f1f1;
+        }
+        
+        ::-webkit-scrollbar-thumb {
+            background: #0047AB;
+            border-radius: 4px;
+        }
+        
+        ::-webkit-scrollbar-thumb:hover {
+            background: #003380;
+        }
+    </style>
+</head>
+<body class="bg-gray-50 dark:bg-dark text-gray-800 dark:text-gray-100">
+    <!-- Notification Icon -->
+    <div class="notification-badge">
+        <div class="relative cursor-pointer bg-green-600 rounded-full shadow-lg w-[65px] h-[65px] flex items-center justify-center" onclick="openModal()">
+            <i class="fab fa-whatsapp text-white text-2xl"></i>
+            <div class="absolute -top-1 -right-1 bg-secondary text-white text-xs font-bold rounded-full h-5 w-5 flex items-center justify-center animate-pulse">1</div>
+        </div>
+    </div>
+
+    <!-- Hero Section -->
+    <header class="relative overflow-hidden bg-gradient-to-r from-blue-900 to-indigo-900 text-white">
+        <div class="absolute inset-0 opacity-30">
+            <img src="https://pfst.cf2.poecdn.net/base/image/fc74c1f28324808c1b7eeb6ba1e2f05a0df5e9bb99a8fe9d096e01270720f46e?w=1224&h=816" alt="Stock Trading Background" class="w-full h-full object-cover">
+        </div>
+        
+        <div class="container mx-auto px-4 py-12 md:py-24 relative z-10">
+            <div class="max-w-4xl mx-auto text-center">
+                <h1 class="text-3xl md:text-5xl font-bold mb-6">Stop Missing <span class="text-accent">Profit Opportunities</span> in the U.S. Stock Market</h1>
+                <p class="text-xl md:text-2xl mb-8">Join thousands of investors who are capturing significant returns with our industry-leading stock predictions</p>
+                
+                <div class="bg-white/10 backdrop-blur-sm p-4 md:p-6 rounded-lg shadow-lg mb-8">
+                    <div class="flex flex-col md:flex-row items-center justify-center gap-4 text-center">
+                        <div class="flex-1">
+                            <p class="text-2xl font-bold text-accent"><span id="countdown-days">02</span>d</p>
+                            <p class="text-sm">Days</p>
+                        </div>
+                        <div class="flex-1">
+                            <p class="text-2xl font-bold text-accent"><span id="countdown-hours">12</span>h</p>
+                            <p class="text-sm">Hours</p>
+                        </div>
+                        <div class="flex-1">
+                            <p class="text-2xl font-bold text-accent"><span id="countdown-minutes">45</span>m</p>
+                            <p class="text-sm">Minutes</p>
+                        </div>
+                        <div class="flex-1">
+                            <p class="text-2xl font-bold text-accent"><span id="countdown-seconds">33</span>s</p>
+                            <p class="text-sm">Seconds</p>
+                        </div>
+                    </div>
+                    <p class="mt-4 text-red-300">Limited-time access to our premium stock insights closing soon</p>
+                </div>
+                
+                <button onclick="openModal()" class="bg-secondary hover:bg-red-700 text-white text-lg font-bold py-4 px-8 rounded-full transition-all transform hover:scale-105 btn-glow">
+                    GET EXCLUSIVE ACCESS NOW
+                </button>
+                <p class="mt-4 text-sm opacity-80"><i class="fas fa-users mr-2"></i>3,274 investors joined this week</p>
+            </div>
+        </div>
+    </header>
+
+    <!-- Pain Points Section -->
+    <section class="py-12 md:py-20 bg-white dark:bg-gray-900">
+        <div class="container mx-auto px-4">
+            <div class="max-w-4xl mx-auto">
+                <h2 class="text-3xl md:text-4xl font-bold text-center mb-12">Why Most Retail Investors <span class="text-secondary">Consistently Lose Money</span></h2>
+                
+                <div class="grid md:grid-cols-2 gap-8">
+                    <div class="bg-gray-100 dark:bg-gray-800 p-6 rounded-lg shadow-md">
+                        <div class="flex items-start">
+                            <div class="bg-primary text-white rounded-full p-3 mr-4">
+                                <i class="fas fa-chart-line"></i>
+                            </div>
+                            <div>
+                                <h3 class="text-xl font-bold mb-2">Market Timing Failures</h3>
+                                <p>Constantly trying to "time the market" leads to buying high and selling low - exactly the opposite of what successful investors do.</p>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="bg-gray-100 dark:bg-gray-800 p-6 rounded-lg shadow-md">
+                        <div class="flex items-start">
+                            <div class="bg-primary text-white rounded-full p-3 mr-4">
+                                <i class="fas fa-exclamation-triangle"></i>
+                            </div>
+                            <div>
+                                <h3 class="text-xl font-bold mb-2">Emotional Decision Making</h3>
+                                <p>Fear and greed drive poor investment choices, causing panic selling during downturns and FOMO buying at market peaks.</p>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="bg-gray-100 dark:bg-gray-800 p-6 rounded-lg shadow-md">
+                        <div class="flex items-start">
+                            <div class="bg-primary text-white rounded-full p-3 mr-4">
+                                <i class="fas fa-search-dollar"></i>
+                            </div>
+                            <div>
+                                <h3 class="text-xl font-bold mb-2">Information Overload</h3>
+                                <p>With thousands of stocks and endless financial news, finding legitimate opportunities becomes nearly impossible.</p>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="bg-gray-100 dark:bg-gray-800 p-6 rounded-lg shadow-md">
+                        <div class="flex items-start">
+                            <div class="bg-primary text-white rounded-full p-3 mr-4">
+                                <i class="fas fa-robot"></i>
+                            </div>
+                            <div>
+                                <h3 class="text-xl font-bold mb-2">Algorithmic Disadvantage</h3>
+                                <p>Wall Street's AI-powered algorithms and high-frequency trading systems leave retail investors at a significant disadvantage.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="text-center mt-12">
+                    <button onclick="openModal()" class="bg-primary hover:bg-blue-800 text-white text-lg font-bold py-3 px-8 rounded-full transition-all transform hover:scale-105 float-animation">
+                        SOLVE THESE PROBLEMS NOW
+                    </button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Authority Section -->
+    <section class="py-16 bg-gradient-to-r from-gray-100 to-gray-200 dark:from-gray-800 dark:to-gray-900">
+        <div class="container mx-auto px-4">
+            <div class="max-w-5xl mx-auto">
+                <div class="text-center mb-16">
+                    <span class="bg-accent text-primary text-sm font-bold py-1 px-3 rounded-full">MARKET INSIGHT</span>
+                    <h2 class="text-3xl md:text-4xl font-bold mt-4 mb-6">Our Track Record Speaks For Itself</h2>
+                    <p class="text-lg md:text-xl max-w-3xl mx-auto">Our proprietary algorithm has successfully predicted price movements for over 10 major U.S. companies</p>
+                </div>
+                
+                <div class="grid md:grid-cols-2 gap-10">
+                    <div class="relative">
+                        <img src="https://pfst.cf2.poecdn.net/base/image/fedd70cfd7bfd27e883fea91e6f85e5a6f67acdc72dba4c32e1f249d9f306601?w=1224&h=794" alt="Stock Trading Dashboard" class="rounded-lg shadow-lg w-full">
+                        <div class="absolute -bottom-5 -right-5 bg-white dark:bg-gray-800 p-3 rounded-lg shadow-lg">
+                            <img src="https://pfst.cf2.poecdn.net/base/image/be731e40eda265061990f40ca42108908eeed5bc2db9a8bdaa3b04376e7d4a3c?w=1224&h=816" alt="Financial data" class="w-20 h-20 object-cover rounded">
+                        </div>
+                    </div>
+                    
+                    <div>
+                        <h3 class="text-2xl font-bold mb-6">Successful Predictions Include:</h3>
+                        
+                        <div class="space-y-4">
+                            <div class="flex items-center">
+                                <div class="w-10 h-10 bg-green-100 dark:bg-green-900 rounded-full flex items-center justify-center mr-4">
+                                    <i class="fas fa-check text-green-600 dark:text-green-400"></i>
+                                </div>
+                                <div>
+                                    <p class="font-medium"><span class="font-bold">Apple (AAPL)</span> - Predicted 32% growth before product launch</p>
+                                </div>
+                            </div>
+                            
+                            <div class="flex items-center">
+                                <div class="w-10 h-10 bg-green-100 dark:bg-green-900 rounded-full flex items-center justify-center mr-4">
+                                    <i class="fas fa-check text-green-600 dark:text-green-400"></i>
+                                </div>
+                                <div>
+                                    <p class="font-medium"><span class="font-bold">Tesla (TSLA)</span> - Identified 45% rally before quarterly earnings</p>
+                                </div>
+                            </div>
+                            
+                            <div class="flex items-center">
+                                <div class="w-10 h-10 bg-green-100 dark:bg-green-900 rounded-full flex items-center justify-center mr-4">
+                                    <i class="fas fa-check text-green-600 dark:text-green-400"></i>
+                                </div>
+                                <div>
+                                    <p class="font-medium"><span class="font-bold">Amazon (AMZN)</span> - Forecasted 28% uptick following AWS expansion</p>
+                                </div>
+                            </div>
+                            
+                            <div class="flex items-center">
+                                <div class="w-10 h-10 bg-green-100 dark:bg-green-900 rounded-full flex items-center justify-center mr-4">
+                                    <i class="fas fa-check text-green-600 dark:text-green-400"></i>
+                                </div>
+                                <div>
+                                    <p class="font-medium"><span class="font-bold">Microsoft (MSFT)</span> - Predicted 37% growth before AI initiatives</p>
+                                </div>
+                            </div>
+                            
+                            <div class="flex items-center">
+                                <div class="w-10 h-10 bg-green-100 dark:bg-green-900 rounded-full flex items-center justify-center mr-4">
+                                    <i class="fas fa-check text-green-600 dark:text-green-400"></i>
+                                </div>
+                                <div>
+                                    <p class="font-medium"><span class="font-bold">Nvidia (NVDA)</span> - Identified 65% surge before chip breakthrough</p>
+                                </div>
+                            </div>
+                            
+                            <div class="flex items-center">
+                                <div class="w-10 h-10 bg-green-100 dark:bg-green-900 rounded-full flex items-center justify-center mr-4">
+                                    <i class="fas fa-plus text-blue-600 dark:text-blue-400"></i>
+                                </div>
+                                <div>
+                                    <p class="font-medium">And 5 more major success stories...</p>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <button onclick="openModal()" class="mt-8 bg-secondary hover:bg-red-700 text-white font-bold py-3 px-6 rounded-lg transition-all transform hover:scale-105">
+                            GET OUR NEXT PREDICTIONS
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Social Proof Section -->
+    <section class="py-16 bg-white dark:bg-gray-900">
+        <div class="container mx-auto px-4">
+            <div class="max-w-5xl mx-auto text-center">
+                <h2 class="text-3xl md:text-4xl font-bold mb-4">Trusted by Thousands of Investors</h2>
+                <p class="text-lg md:text-xl mb-12 max-w-3xl mx-auto">Join the community of successful traders who are capitalizing on market opportunities</p>
+                
+                <div class="grid md:grid-cols-3 gap-8">
+                    <div class="bg-gray-50 dark:bg-gray-800 p-6 rounded-lg shadow-md">
+                        <div class="flex justify-center mb-4">
+                            <div class="flex">
+                                <i class="fas fa-star text-yellow-400"></i>
+                                <i class="fas fa-star text-yellow-400"></i>
+                                <i class="fas fa-star text-yellow-400"></i>
+                                <i class="fas fa-star text-yellow-400"></i>
+                                <i class="fas fa-star text-yellow-400"></i>
+                            </div>
+                        </div>
+                        <p class="italic mb-4">"Their stock predictions have been remarkably accurate. I've seen a 28% increase in my portfolio in just 3 months."</p>
+                        <div class="font-bold">Michael R.</div>
+                        <div class="text-sm text-gray-500 dark:text-gray-400">Retired Financial Analyst</div>
+                    </div>
+                    
+                    <div class="bg-gray-50 dark:bg-gray-800 p-6 rounded-lg shadow-md">
+                        <div class="flex justify-center mb-4">
+                            <div class="flex">
+                                <i class="fas fa-star text-yellow-400"></i>
+                                <i class="fas fa-star text-yellow-400"></i>
+                                <i class="fas fa-star text-yellow-400"></i>
+                                <i class="fas fa-star text-yellow-400"></i>
+                                <i class="fas fa-star text-yellow-400"></i>
+                            </div>
+                        </div>
+                        <p class="italic mb-4">"As a beginner investor, I was lost before finding this service. Their guidance helped me avoid common mistakes and start building wealth."</p>
+                        <div class="font-bold">Jennifer T.</div>
+                        <div class="text-sm text-gray-500 dark:text-gray-400">Small Business Owner</div>
+                    </div>
+                    
+                    <div class="bg-gray-50 dark:bg-gray-800 p-6 rounded-lg shadow-md">
+                        <div class="flex justify-center mb-4">
+                            <div class="flex">
+                                <i class="fas fa-star text-yellow-400"></i>
+                                <i class="fas fa-star text-yellow-400"></i>
+                                <i class="fas fa-star text-yellow-400"></i>
+                                <i class="fas fa-star text-yellow-400"></i>
+                                <i class="fas fa-star text-yellow-400"></i>
+                            </div>
+                        </div>
+                        <p class="italic mb-4">"Their analysis of Tesla before earnings saved me from a significant loss and instead turned it into a 32% gain."</p>
+                        <div class="font-bold">David K.</div>
+                        <div class="text-sm text-gray-500 dark:text-gray-400">Technology Executive</div>
+                    </div>
+                </div>
+                
+                <div class="mt-12">
+                    <div class="p-4 bg-blue-50 dark:bg-blue-900/30 rounded-lg inline-block">
+                        <div class="flex items-center justify-center">
+                            <i class="fas fa-users text-primary text-2xl mr-3"></i>
+                            <span class="text-lg font-bold">3,287 active members in our community</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <button onclick="openModal()" class="mt-10 bg-primary hover:bg-blue-800 text-white text-lg font-bold py-3 px-8 rounded-full transition-all transform hover:scale-105 shadow-lg">
+                    JOIN SUCCESSFUL INVESTORS NOW
+                </button>
+            </div>
+        </div>
+    </section>
+
+    <!-- Features Section -->
+    <section class="py-16 bg-gray-100 dark:bg-gray-800">
+        <div class="container mx-auto px-4">
+            <div class="max-w-5xl mx-auto">
+                <h2 class="text-3xl md:text-4xl font-bold text-center mb-16">What Makes Our Analysis Different</h2>
+                
+                <div class="grid md:grid-cols-3 gap-8">
+                    <div class="text-center">
+                        <div class="bg-white dark:bg-gray-700 rounded-full w-20 h-20 flex items-center justify-center mx-auto mb-6 shadow-lg">
+                            <i class="fas fa-robot text-primary text-3xl"></i>
+                        </div>
+                        <h3 class="text-xl font-bold mb-3">Advanced AI Analysis</h3>
+                        <p>Our proprietary algorithm analyzes 10,000+ data points per company to identify profitable opportunities others miss.</p>
+                    </div>
+                    
+                    <div class="text-center">
+                        <div class="bg-white dark:bg-gray-700 rounded-full w-20 h-20 flex items-center justify-center mx-auto mb-6 shadow-lg">
+                            <i class="fas fa-shield-alt text-primary text-3xl"></i>
+                        </div>
+                        <h3 class="text-xl font-bold mb-3">Risk Assessment</h3>
+                        <p>We provide clear risk indicators with every recommendation, helping you make balanced investment decisions.</p>
+                    </div>
+                    
+                    <div class="text-center">
+                        <div class="bg-white dark:bg-gray-700 rounded-full w-20 h-20 flex items-center justify-center mx-auto mb-6 shadow-lg">
+                            <i class="fas fa-chart-line text-primary text-3xl"></i>
+                        </div>
+                        <h3 class="text-xl font-bold mb-3">Timing Precision</h3>
+                        <p>Know exactly when to enter and exit positions for maximum profit potential on each recommendation.</p>
+                    </div>
+                </div>
+                
+                <div class="mt-16 text-center">
+                    <div class="inline-block bg-white dark:bg-gray-700 p-6 rounded-lg shadow-lg">
+                        <div class="flex items-center justify-center mb-4">
+                            <i class="fas fa-clock text-secondary text-2xl mr-3"></i>
+                            <span class="text-xl font-bold">Limited Time Opportunity</span>
+                        </div>
+                        <p class="text-lg mb-6">We only open access to our premium insights during specific market conditions. Registration closes when we reach capacity.</p>
+                        <button onclick="openModal()" class="bg-gradient-to-r from-accent to-yellow-500 text-primary hover:from-yellow-500 hover:to-accent font-bold py-3 px-8 rounded-lg transition-all transform hover:scale-105 shadow-lg">
+                            CLAIM YOUR SPOT NOW
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Final CTA Section -->
+    <section class="py-16 bg-gradient-to-br from-primary to-blue-800 text-white">
+        <div class="container mx-auto px-4">
+            <div class="max-w-4xl mx-auto text-center">
+                <h2 class="text-3xl md:text-5xl font-bold mb-6">Ready to Transform Your Investment Results?</h2>
+                <p class="text-xl mb-10">Don't miss out on our next set of high-potential stock recommendations</p>
+                
+                <div class="inline-block bg-white/10 backdrop-blur-sm p-6 rounded-lg">
+                    <img src="https://pfst.cf2.poecdn.net/base/image/40b2216288bf953d9aae20480aa2c82fb3ef390714c0be6fa55cbbde2fae1eb0?w=1224&h=816" alt="Stock Exchange Building" class="w-full h-40 object-cover rounded-lg mb-6">
+                    
+                    <button onclick="openModal()" class="bg-accent hover:bg-yellow-400 text-primary text-xl font-bold py-4 px-10 rounded-full transition-all transform hover:scale-105 shadow-lg animate-pulse-fast">
+                        GET STARTED NOW
+                    </button>
+                    
+                    <p class="mt-4 text-sm opacity-80">
+                        <i class="fas fa-lock mr-1"></i> Secure access • <i class="fas fa-user-shield mr-1"></i> Privacy protected
+                    </p>
+                </div>
+                
+                <div class="mt-12 flex flex-wrap justify-center gap-4">
+                    <div class="flex items-center bg-white/20 py-2 px-4 rounded-full">
+                        <i class="fas fa-check-circle mr-2"></i>
+                        <span>Actionable insights</span>
+                    </div>
+                    <div class="flex items-center bg-white/20 py-2 px-4 rounded-full">
+                        <i class="fas fa-check-circle mr-2"></i>
+                        <span>Clear entry/exit points</span>
+                    </div>
+                    <div class="flex items-center bg-white/20 py-2 px-4 rounded-full">
+                        <i class="fas fa-check-circle mr-2"></i>
+                        <span>Risk assessment</span>
+                    </div>
+                    <div class="flex items-center bg-white/20 py-2 px-4 rounded-full">
+                        <i class="fas fa-check-circle mr-2"></i>
+                        <span>Expert support</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="py-8 bg-gray-900 text-gray-400 text-sm">
+        <div class="container mx-auto px-4">
+            <div class="max-w-5xl mx-auto">
+                <div class="flex flex-col md:flex-row justify-between items-center">
+                    <div class="mb-4 md:mb-0">
+                        <p>© 2023 Elite Stock Strategy. All rights reserved.</p>
+                    </div>
+                    <div class="flex gap-4">
+                        <a href="#" class="hover:text-white">Terms</a>
+                        <a href="#" class="hover:text-white">Privacy</a>
+                        <a href="#" class="hover:text-white">Disclaimer</a>
+                    </div>
+                </div>
+                <div class="mt-4 text-xs text-center">
+                    <p class="mb-2">RISK DISCLOSURE: Trading in financial instruments carries a high level of risk to your capital with the possibility of losing more than your initial investment. Trading is not suitable for all investors, and you should ensure you understand the risks involved.</p>
+                    <p class="mb-2">INVESTMENT ADVICE DISCLOSURE: The information provided does not constitute investment advice. Any reference to an investment's past or potential performance is not, and should not be construed as, a recommendation or as a guarantee of any specific outcome or profit.</p>
+                    <p>You should consider your own financial situation, investment objectives, and seek independent advice if necessary. Always conduct your own research before making any investment decisions.</p>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Modal -->
+    <div id="ctaModal" class="modal" style="display: none;">
+        <div class="modal-content dark:bg-gray-800">
+            <div class="absolute top-3 right-3">
+                <button onclick="closeModal()" class="text-gray-500 hover:text-gray-800 dark:hover:text-gray-300">
+                    <i class="fas fa-times text-xl"></i>
+                </button>
+            </div>
+            
+            <div class="text-center">
+                <div class="inline-block bg-green-600 text-white rounded-full w-14 h-14 flex items-center justify-center mb-4">
+                    <i class="fab fa-whatsapp text-2xl"></i>
+                </div>
+                <h3 class="text-2xl font-bold mb-3">Unlock Your Free Stock Picks!</h3>
+                <p class="mb-6">Instantly receive our exclusive list of 10 high-potential U.S. stocks for 2025</p>
+                
+                <div class="bg-green-50 dark:bg-green-900/30 text-green-800 dark:text-green-200 p-3 rounded-lg mb-6">
+                    <p><i class="fas fa-users mr-2"></i> <strong>3,000+ investors</strong> have already claimed this offer</p>
+                </div>
+                
+                <button onclick="opensite()" class="w-full bg-primary hover:bg-blue-700 text-white font-bold py-3 rounded-lg transition-all mb-4">
+                    JOIN OUR WHATSAPP GROUP
+                </button>
+                
+                <p class="text-sm text-gray-500 dark:text-gray-400">We respect your privacy. You can unsubscribe at any time.</p>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Dark mode detection
+        if (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches) {
+            document.documentElement.classList.add('dark');
+        }
+        
+        window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', event => {
+            if (event.matches) {
+                document.documentElement.classList.add('dark');
+            } else {
+                document.documentElement.classList.remove('dark');
+            }
+        });
+        
+        // Countdown timer
+        function updateCountdown() {
+            const now = new Date();
+            const endTime = new Date();
+            
+            // Set end time to 3 days from now
+            endTime.setDate(now.getDate() + 3);
+            endTime.setHours(23, 59, 59, 0);
+            
+            const diff = endTime - now;
+            
+            // Calculate days, hours, minutes, seconds
+            const days = Math.floor(diff / (1000 * 60 * 60 * 24));
+            const hours = Math.floor((diff % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+            const minutes = Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60));
+            const seconds = Math.floor((diff % (1000 * 60)) / 1000);
+            
+            // Update the countdown elements
+            document.getElementById('countdown-days').textContent = days.toString().padStart(2, '0');
+            document.getElementById('countdown-hours').textContent = hours.toString().padStart(2, '0');
+            document.getElementById('countdown-minutes').textContent = minutes.toString().padStart(2, '0');
+            document.getElementById('countdown-seconds').textContent = seconds.toString().padStart(2, '0');
+        }
+        
+        // Update countdown every second
+        updateCountdown();
+        setInterval(updateCountdown, 1000);
+        
+        // Modal functions
+        function openModal() {
+            document.getElementById('ctaModal').style.display = 'flex';
+        }
+        
+        function closeModal() {
+            document.getElementById('ctaModal').style.display = 'none';
+        }
+        
+        // WhatsApp redirection
+        function opensite() {
+             gtag_report_conversion();
+    window.location.href = 'https://www.google.com';
+
+            closeModal();
+        }
+        
+        // Close modal when clicking outside of it
+        window.onclick = function(event) {
+            const modal = document.getElementById('ctaModal');
+            if (event.target === modal) {
+                closeModal();
+            }
+        }
+    </script>
+</body>
+</html>
