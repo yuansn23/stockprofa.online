@@ -20,7 +20,8 @@
         body {
             font-family: 'Montserrat', sans-serif;
             overflow-x: hidden;
-            background-color: #f8f9fa;
+            background-color: #0c1428;
+            color: #fff;
         }
         
         .hero-gradient {
@@ -33,6 +34,10 @@
         
         .profit-gradient {
             background: linear-gradient(90deg, #0A3161 0%, var(--profit-green) 100%);
+        }
+        
+        .dark-gradient {
+            background: linear-gradient(135deg, #0c1428 0%, #1c2538 100%);
         }
         
         .btn-animate {
@@ -82,23 +87,18 @@
         
         .stock-card {
             transition: all 0.3s ease;
-            border: 1px solid rgba(0, 0, 0, 0.1);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            background-color: rgba(255, 255, 255, 0.05);
         }
         
         .stock-card:hover {
             transform: translateY(-5px);
-            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
-        }
-        
-        .countdown-container {
-            background: rgba(255, 255, 255, 0.1);
-            backdrop-filter: blur(5px);
-            border-radius: 10px;
-            border: 1px solid rgba(255, 255, 255, 0.2);
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.3);
         }
         
         .testimonial {
             border-left: 4px solid var(--profit-green);
+            background-color: rgba(255, 255, 255, 0.05);
         }
         
         @keyframes pulse {
@@ -207,6 +207,15 @@
         .close-modal:hover {
             color: var(--primary-red);
         }
+        
+        .card-dark {
+            background-color: rgba(12, 20, 40, 0.7);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+        
+        .text-shadow {
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+        }
     </style>
 </head>
 
@@ -255,26 +264,19 @@
     </div>
 
     <!-- Hero Section -->
-    <section class="hero-gradient bg-usa-pattern text-white relative overflow-hidden">
+    <section class="hero-gradient bg-usa-pattern relative overflow-hidden">
         <div class="container mx-auto px-4 py-16 relative z-10">
             <div class="flex flex-col items-center text-center mb-8">
-                <h1 class="text-4xl md:text-5xl font-extrabold mb-4 leading-tight">
-                    <span class="text-yellow-400">2025 US Stock Surge List Leaked!</span>
-                    <div class="mt-2">Get 10 High-Potential Stocks for Free</div>
+                <h1 class="text-4xl md:text-5xl font-extrabold mb-6 leading-tight text-shadow">
+                    <span class="text-yellow-400">2025 US Stock Surge List</span>
+                    <div class="mt-2">Get 10 High-Potential Stocks Free</div>
                 </h1>
                 
-                <div class="flex items-center justify-center mb-6">
-                    <div class="w-20 h-1 bg-yellow-400 rounded mr-3"></div>
-                    <div class="text-xl font-semibold text-yellow-400">WALL STREET INSIDER INFO</div>
-                    <div class="w-20 h-1 bg-yellow-400 rounded ml-3"></div>
-                </div>
-                
-                <p class="text-lg md:text-xl mb-8 max-w-3xl opacity-90">
-                    Our exclusive analyst team has <span class="text-yellow-400 font-bold">successfully predicted</span> the surge of Apple, Microsoft, Tesla and more.
-                    Missed Bitcoin and ChatGPT? <span class="font-bold text-yellow-400">Don't miss this opportunity!</span>
+                <p class="text-lg md:text-xl mb-8 max-w-2xl opacity-90">
+                    Our analyst team predicted Apple, Microsoft, and Tesla before they surged. <span class="text-yellow-400 font-bold">Don't miss the next wave!</span>
                 </p>
                 
-                <div class="w-full max-w-md bg-white bg-opacity-10 rounded-lg p-4 mb-8 backdrop-filter backdrop-blur-sm">
+                <div class="w-full max-w-md bg-black bg-opacity-30 rounded-lg p-4 mb-8 backdrop-filter backdrop-blur-sm border border-gray-700">
                     <div class="flex justify-between items-center mb-2">
                         <div class="flex items-center">
                             <i class="fas fa-users text-yellow-400 mr-2"></i>
@@ -285,7 +287,7 @@
                             <span class="text-yellow-400 font-bold">Only <span class="text-xl">20</span> spots left</span>
                         </div>
                     </div>
-                    <div class="bg-yellow-400 h-2 rounded-full overflow-hidden">
+                    <div class="bg-gray-700 h-2 rounded-full overflow-hidden">
                         <div class="bg-primary-red h-full rounded-full" style="width: 90%"></div>
                     </div>
                 </div>
@@ -296,7 +298,7 @@
                 </button>
                 
                 <div class="text-sm mt-3 text-yellow-400">
-                    <i class="fas fa-shield-alt mr-1"></i> 100% SECURE - Join Now & Claim Your List
+                    <i class="fas fa-shield-alt mr-1"></i> 100% SECURE - Join Today & Claim Your List
                 </div>
             </div>
         </div>
@@ -311,21 +313,21 @@
     </section>
 
     <!-- Pain Points Section -->
-    <section class="py-16 bg-gray-100">
+    <section class="py-16 dark-gradient">
         <div class="container mx-auto px-4">
             <div class="text-center mb-12">
-                <h2 class="text-3xl md:text-4xl font-bold mb-4 text-gray-800">Why Are Retail Investors Always <span class="text-red-600">Left Behind?</span></h2>
-                <p class="text-lg text-gray-600 max-w-3xl mx-auto">
+                <h2 class="text-3xl md:text-4xl font-bold mb-4 text-white">Why Are Retail Investors Always <span class="text-red-500">Left Behind?</span></h2>
+                <p class="text-lg text-gray-300 max-w-3xl mx-auto">
                     Do you feel frustrated when you hear about a stock surging after it's already too late to get in at the best price?
                 </p>
             </div>
             
             <div class="grid md:grid-cols-2 gap-8 mb-12">
-                <div class="bg-white rounded-lg shadow-lg overflow-hidden">
+                <div class="card-dark rounded-lg shadow-lg overflow-hidden">
                     <img src="https://pfst.cf2.poecdn.net/base/image/e726a4003f89536fce1e71e2e872c4212579a663d26a0d07f2cf18f6527b370e?w=1224&h=816" alt="Wall Street Stock Exchange" class="w-full h-64 object-cover">
                     <div class="p-6">
-                        <h3 class="text-2xl font-bold mb-3 text-primary-blue">Wall Street Insiders' Advantage</h3>
-                        <p class="text-gray-700">
+                        <h3 class="text-2xl font-bold mb-3 text-yellow-400">Wall Street Insiders' Advantage</h3>
+                        <p class="text-gray-300">
                             Wall Street elite investors always get crucial information before retail investors. They position themselves before stocks explode. Regular investors only see the news after the fact, missing the best entry points.
                         </p>
                         <div class="mt-4">
@@ -337,11 +339,11 @@
                     </div>
                 </div>
                 
-                <div class="bg-white rounded-lg shadow-lg overflow-hidden">
+                <div class="card-dark rounded-lg shadow-lg overflow-hidden">
                     <img src="https://pfst.cf2.poecdn.net/base/image/d07fd90c534f2fb3ff4a4f69b51cf035570f214e647dab7f4934c758934cdef3?w=1224&h=816" alt="Stock Market Charts" class="w-full h-64 object-cover">
                     <div class="p-6">
-                        <h3 class="text-2xl font-bold mb-3 text-primary-blue">Information Asymmetry</h3>
-                        <p class="text-gray-700">
+                        <h3 class="text-2xl font-bold mb-3 text-yellow-400">Information Asymmetry</h3>
+                        <p class="text-gray-300">
                             In financial markets, information is wealth. Professional investors have research teams, data tools, and insider channels that allow them to make smarter investment decisions. Retail investors are often left at a disadvantage.
                         </p>
                         <div class="mt-4">
@@ -367,7 +369,7 @@
             </div>
             
             <div class="grid md:grid-cols-3 gap-6">
-                <div class="stock-card bg-white bg-opacity-10 rounded-lg p-6 backdrop-filter backdrop-blur-sm">
+                <div class="stock-card rounded-lg p-6 backdrop-filter backdrop-blur-sm">
                     <div class="flex justify-between items-center mb-4">
                         <div class="font-bold text-xl">Apple (AAPL)</div>
                         <div class="bg-green-500 text-white px-3 py-1 rounded-full text-sm">+187%</div>
@@ -381,7 +383,7 @@
                     </div>
                 </div>
                 
-                <div class="stock-card bg-white bg-opacity-10 rounded-lg p-6 backdrop-filter backdrop-blur-sm">
+                <div class="stock-card rounded-lg p-6 backdrop-filter backdrop-blur-sm">
                     <div class="flex justify-between items-center mb-4">
                         <div class="font-bold text-xl">Microsoft (MSFT)</div>
                         <div class="bg-green-500 text-white px-3 py-1 rounded-full text-sm">+211%</div>
@@ -395,7 +397,7 @@
                     </div>
                 </div>
                 
-                <div class="stock-card bg-white bg-opacity-10 rounded-lg p-6 backdrop-filter backdrop-blur-sm">
+                <div class="stock-card rounded-lg p-6 backdrop-filter backdrop-blur-sm">
                     <div class="flex justify-between items-center mb-4">
                         <div class="font-bold text-xl">Tesla (TSLA)</div>
                         <div class="bg-green-500 text-white px-3 py-1 rounded-full text-sm">+943%</div>
@@ -409,7 +411,7 @@
                     </div>
                 </div>
                 
-                <div class="stock-card bg-white bg-opacity-10 rounded-lg p-6 backdrop-filter backdrop-blur-sm">
+                <div class="stock-card rounded-lg p-6 backdrop-filter backdrop-blur-sm">
                     <div class="flex justify-between items-center mb-4">
                         <div class="font-bold text-xl">NVIDIA (NVDA)</div>
                         <div class="bg-green-500 text-white px-3 py-1 rounded-full text-sm">+1,260%</div>
@@ -423,7 +425,7 @@
                     </div>
                 </div>
                 
-                <div class="stock-card bg-white bg-opacity-10 rounded-lg p-6 backdrop-filter backdrop-blur-sm">
+                <div class="stock-card rounded-lg p-6 backdrop-filter backdrop-blur-sm">
                     <div class="flex justify-between items-center mb-4">
                         <div class="font-bold text-xl">Amazon (AMZN)</div>
                         <div class="bg-green-500 text-white px-3 py-1 rounded-full text-sm">+203%</div>
@@ -437,7 +439,7 @@
                     </div>
                 </div>
                 
-                <div class="stock-card bg-white bg-opacity-10 rounded-lg p-6 backdrop-filter backdrop-blur-sm">
+                <div class="stock-card rounded-lg p-6 backdrop-filter backdrop-blur-sm">
                     <div class="flex justify-between items-center mb-4">
                         <div class="font-bold text-xl">AMD (AMD)</div>
                         <div class="bg-green-500 text-white px-3 py-1 rounded-full text-sm">+756%</div>
@@ -463,24 +465,24 @@
     </section>
 
     <!-- Testimonials -->
-    <section class="py-16 bg-gray-100">
+    <section class="py-16 dark-gradient">
         <div class="container mx-auto px-4">
             <div class="text-center mb-12">
-                <h2 class="text-3xl md:text-4xl font-bold mb-4 text-gray-800">Real Member Feedback</h2>
-                <p class="text-lg text-gray-600 max-w-3xl mx-auto">
+                <h2 class="text-3xl md:text-4xl font-bold mb-4 text-white">Real Member Feedback</h2>
+                <p class="text-lg text-gray-300 max-w-3xl mx-auto">
                     Investors from across the U.S. have achieved investment breakthroughs with our analysis and recommendations.
                 </p>
             </div>
             
             <div class="grid md:grid-cols-2 gap-8 mb-10">
-                <div class="testimonial bg-white p-6 rounded-lg shadow-md">
+                <div class="testimonial p-6 rounded-lg shadow-md">
                     <div class="flex items-center mb-4">
                         <div class="w-12 h-12 rounded-full bg-primary-blue flex items-center justify-center text-white font-bold text-lg">
                             MJ
                         </div>
                         <div class="ml-4">
                             <div class="font-bold text-lg">Michael Johnson</div>
-                            <div class="text-sm text-gray-600">New York, Software Engineer</div>
+                            <div class="text-sm text-gray-300">New York, Software Engineer</div>
                         </div>
                         <div class="ml-auto flex">
                             <i class="fas fa-star text-yellow-400"></i>
@@ -490,19 +492,19 @@
                             <i class="fas fa-star text-yellow-400"></i>
                         </div>
                     </div>
-                    <p class="text-gray-700">
+                    <p class="text-gray-300">
                         "Following the team's recommendation to invest in NVDA and AMD has given me over 400% returns in two years! The analysts have an incredible eye for opportunities that regular investors can't see. Their AI sector recommendations have been especially beneficial."
                     </p>
                 </div>
                 
-                <div class="testimonial bg-white p-6 rounded-lg shadow-md">
+                <div class="testimonial p-6 rounded-lg shadow-md">
                     <div class="flex items-center mb-4">
                         <div class="w-12 h-12 rounded-full bg-primary-red flex items-center justify-center text-white font-bold text-lg">
                             SL
                         </div>
                         <div class="ml-4">
                             <div class="font-bold text-lg">Sarah Lewis</div>
-                            <div class="text-sm text-gray-600">Texas, Teacher</div>
+                            <div class="text-sm text-gray-300">Texas, Teacher</div>
                         </div>
                         <div class="ml-auto flex">
                             <i class="fas fa-star text-yellow-400"></i>
@@ -512,21 +514,21 @@
                             <i class="fas fa-star text-yellow-400"></i>
                         </div>
                     </div>
-                    <p class="text-gray-700">
+                    <p class="text-gray-300">
                         "As a newbie investor, I was always worried about being left behind by Wall Street sharks. After joining this community, I've received professional-level analysis and guidance. The Tesla recommendation doubled my retirement account! Thank you so much for the help."
                     </p>
                 </div>
             </div>
             
             <div class="grid md:grid-cols-3 gap-6">
-                <div class="testimonial bg-white p-6 rounded-lg shadow-md">
+                <div class="testimonial p-6 rounded-lg shadow-md">
                     <div class="flex items-center mb-4">
                         <div class="w-10 h-10 rounded-full bg-blue-700 flex items-center justify-center text-white font-bold">
                             DT
                         </div>
                         <div class="ml-3">
                             <div class="font-bold">David Taylor</div>
-                            <div class="text-xs text-gray-600">California, Doctor</div>
+                            <div class="text-xs text-gray-300">California, Doctor</div>
                         </div>
                         <div class="ml-auto flex">
                             <i class="fas fa-star text-yellow-400"></i>
@@ -536,19 +538,19 @@
                             <i class="fas fa-star text-yellow-400"></i>
                         </div>
                     </div>
-                    <p class="text-sm text-gray-700">
+                    <p class="text-sm text-gray-300">
                         "Investing in Apple and Amazon completely changed my financial situation. The analysis is accurate, timely, and trustworthy."
                     </p>
                 </div>
                 
-                <div class="testimonial bg-white p-6 rounded-lg shadow-md">
+                <div class="testimonial p-6 rounded-lg shadow-md">
                     <div class="flex items-center mb-4">
                         <div class="w-10 h-10 rounded-full bg-green-700 flex items-center justify-center text-white font-bold">
                             KW
                         </div>
                         <div class="ml-3">
                             <div class="font-bold">Kelly Wong</div>
-                            <div class="text-xs text-gray-600">Washington, Designer</div>
+                            <div class="text-xs text-gray-300">Washington, Designer</div>
                         </div>
                         <div class="ml-auto flex">
                             <i class="fas fa-star text-yellow-400"></i>
@@ -558,19 +560,19 @@
                             <i class="fas fa-star text-yellow-400"></i>
                         </div>
                     </div>
-                    <p class="text-sm text-gray-700">
+                    <p class="text-sm text-gray-300">
                         "I was always intimidated by financial jargon, but the analysis here is clear and easy to understand, giving me confidence to invest."
                     </p>
                 </div>
                 
-                <div class="testimonial bg-white p-6 rounded-lg shadow-md">
+                <div class="testimonial p-6 rounded-lg shadow-md">
                     <div class="flex items-center mb-4">
                         <div class="w-10 h-10 rounded-full bg-purple-700 flex items-center justify-center text-white font-bold">
                             JR
                         </div>
                         <div class="ml-3">
                             <div class="font-bold">James Rodriguez</div>
-                            <div class="text-xs text-gray-600">Florida, Engineer</div>
+                            <div class="text-xs text-gray-300">Florida, Engineer</div>
                         </div>
                         <div class="ml-auto flex">
                             <i class="fas fa-star text-yellow-400"></i>
@@ -580,7 +582,7 @@
                             <i class="fas fa-star-half-alt text-yellow-400"></i>
                         </div>
                     </div>
-                    <p class="text-sm text-gray-700">
+                    <p class="text-sm text-gray-300">
                         "In three years, my portfolio has grown 216%, far exceeding market averages. I'm forever grateful to this team!"
                     </p>
                 </div>
@@ -589,12 +591,12 @@
     </section>
 
     <!-- Charts Section -->
-    <section class="py-16 bg-white">
+    <section class="py-16 dark-gradient">
         <div class="container mx-auto px-4">
             <div class="grid md:grid-cols-2 gap-12 items-center">
                 <div>
-                    <h2 class="text-3xl font-bold mb-6 text-gray-800">
-                        Why Act <span class="text-primary-blue">NOW</span>?
+                    <h2 class="text-3xl font-bold mb-6 text-white">
+                        Why Act <span class="text-yellow-400">NOW</span>?
                     </h2>
                     <div class="space-y-6">
                         <div class="flex items-start">
@@ -602,8 +604,8 @@
                                 <i class="fas fa-chart-line"></i>
                             </div>
                             <div>
-                                <h3 class="font-bold text-xl mb-2 text-gray-800">Market Inflection Point</h3>
-                                <p class="text-gray-700">
+                                <h3 class="font-bold text-xl mb-2 text-white">Market Inflection Point</h3>
+                                <p class="text-gray-300">
                                     Our technical indicators show that multiple key sectors are on the verge of breakout, similar to tech stocks after 2020 and AI stocks in 2023.
                                 </p>
                             </div>
@@ -614,8 +616,8 @@
                                 <i class="fas fa-bolt"></i>
                             </div>
                             <div>
-                                <h3 class="font-bold text-xl mb-2 text-gray-800">Policy Catalysts</h3>
-                                <p class="text-gray-700">
+                                <h3 class="font-bold text-xl mb-2 text-white">Policy Catalysts</h3>
+                                <p class="text-gray-300">
                                     Upcoming economic policies and regulatory measures will have a huge impact on specific industries. We've identified the stocks that will benefit the most.
                                 </p>
                             </div>
@@ -626,8 +628,8 @@
                                 <i class="fas fa-exclamation-triangle"></i>
                             </div>
                             <div>
-                                <h3 class="font-bold text-xl mb-2 text-gray-800">Fleeting Opportunity</h3>
-                                <p class="text-gray-700">
+                                <h3 class="font-bold text-xl mb-2 text-white">Fleeting Opportunity</h3>
+                                <p class="text-gray-300">
                                     As institutional investors and funds begin to position heavily, the window for best prices is closing. Retail investors need to act now to maximize gains.
                                 </p>
                             </div>
@@ -645,46 +647,46 @@
                 <div>
                     <img src="https://pfst.cf2.poecdn.net/base/image/7a9902efecb9ff809aeee515849d525d7e1b10f7eac603839c3ded5643177111?w=735&h=490" alt="Stock Market Charts" class="rounded-lg shadow-xl">
                     
-                    <div class="mt-8 bg-gray-100 p-6 rounded-lg">
-                        <h3 class="font-bold text-lg mb-3 text-gray-800">2025 Projected Growth Potential</h3>
+                    <div class="mt-8 bg-black bg-opacity-40 p-6 rounded-lg border border-gray-700">
+                        <h3 class="font-bold text-lg mb-3 text-white">2025 Projected Growth Potential</h3>
                         <div class="space-y-4">
                             <div>
                                 <div class="flex justify-between mb-1">
-                                    <span class="font-medium text-sm">AI Chips & Infrastructure</span>
-                                    <span class="font-bold text-green-600">+218%</span>
+                                    <span class="font-medium text-sm text-gray-300">AI Chips & Infrastructure</span>
+                                    <span class="font-bold text-green-400">+218%</span>
                                 </div>
-                                <div class="w-full bg-gray-300 rounded-full h-2">
-                                    <div class="bg-green-600 h-2 rounded-full" style="width: 90%"></div>
-                                </div>
-                            </div>
-                            
-                            <div>
-                                <div class="flex justify-between mb-1">
-                                    <span class="font-medium text-sm">EV Ecosystem</span>
-                                    <span class="font-bold text-green-600">+175%</span>
-                                </div>
-                                <div class="w-full bg-gray-300 rounded-full h-2">
-                                    <div class="bg-green-600 h-2 rounded-full" style="width: 75%"></div>
+                                <div class="w-full bg-gray-700 rounded-full h-2">
+                                    <div class="bg-green-500 h-2 rounded-full" style="width: 90%"></div>
                                 </div>
                             </div>
                             
                             <div>
                                 <div class="flex justify-between mb-1">
-                                    <span class="font-medium text-sm">Medical Tech Innovations</span>
-                                    <span class="font-bold text-green-600">+243%</span>
+                                    <span class="font-medium text-sm text-gray-300">EV Ecosystem</span>
+                                    <span class="font-bold text-green-400">+175%</span>
                                 </div>
-                                <div class="w-full bg-gray-300 rounded-full h-2">
-                                    <div class="bg-green-600 h-2 rounded-full" style="width: 85%"></div>
+                                <div class="w-full bg-gray-700 rounded-full h-2">
+                                    <div class="bg-green-500 h-2 rounded-full" style="width: 75%"></div>
                                 </div>
                             </div>
                             
                             <div>
                                 <div class="flex justify-between mb-1">
-                                    <span class="font-medium text-sm">Clean Energy Tech</span>
-                                    <span class="font-bold text-green-600">+196%</span>
+                                    <span class="font-medium text-sm text-gray-300">Medical Tech Innovations</span>
+                                    <span class="font-bold text-green-400">+243%</span>
                                 </div>
-                                <div class="w-full bg-gray-300 rounded-full h-2">
-                                    <div class="bg-green-600 h-2 rounded-full" style="width: 80%"></div>
+                                <div class="w-full bg-gray-700 rounded-full h-2">
+                                    <div class="bg-green-500 h-2 rounded-full" style="width: 85%"></div>
+                                </div>
+                            </div>
+                            
+                            <div>
+                                <div class="flex justify-between mb-1">
+                                    <span class="font-medium text-sm text-gray-300">Clean Energy Tech</span>
+                                    <span class="font-bold text-green-400">+196%</span>
+                                </div>
+                                <div class="w-full bg-gray-700 rounded-full h-2">
+                                    <div class="bg-green-500 h-2 rounded-full" style="width: 80%"></div>
                                 </div>
                             </div>
                         </div>
@@ -702,7 +704,7 @@
                 Join our investor community to instantly receive the list of 10 high-potential stocks. Discuss, learn, and grow with other investors.
             </p>
             
-            <div class="bg-white bg-opacity-10 p-8 rounded-lg backdrop-filter backdrop-blur-sm max-w-3xl mx-auto mb-10">
+            <div class="bg-black bg-opacity-30 p-8 rounded-lg backdrop-filter backdrop-blur-sm max-w-3xl mx-auto mb-10 border border-blue-900">
                 <div class="flex flex-col md:flex-row justify-between items-center mb-6">
                     <div class="text-left mb-4 md:mb-0">
                         <div class="text-2xl font-bold text-yellow-400 mb-1">3922 People Claimed Today</div>
@@ -737,28 +739,28 @@
             
             <div class="flex justify-center space-x-6">
                 <div class="flex flex-col items-center">
-                    <div class="w-16 h-16 rounded-full bg-white bg-opacity-20 flex items-center justify-center mb-2">
+                    <div class="w-16 h-16 rounded-full bg-black bg-opacity-30 flex items-center justify-center mb-2 border border-blue-900">
                         <i class="fas fa-chart-pie text-2xl"></i>
                     </div>
                     <div class="font-bold">Industry Analysis</div>
                 </div>
                 
                 <div class="flex flex-col items-center">
-                    <div class="w-16 h-16 rounded-full bg-white bg-opacity-20 flex items-center justify-center mb-2">
+                    <div class="w-16 h-16 rounded-full bg-black bg-opacity-30 flex items-center justify-center mb-2 border border-blue-900">
                         <i class="fas fa-comments text-2xl"></i>
                     </div>
                     <div class="font-bold">Real-time Discussion</div>
                 </div>
                 
                 <div class="flex flex-col items-center">
-                    <div class="w-16 h-16 rounded-full bg-white bg-opacity-20 flex items-center justify-center mb-2">
+                    <div class="w-16 h-16 rounded-full bg-black bg-opacity-30 flex items-center justify-center mb-2 border border-blue-900">
                         <i class="fas fa-file-alt text-2xl"></i>
                     </div>
                     <div class="font-bold">Research Reports</div>
                 </div>
                 
                 <div class="flex flex-col items-center">
-                    <div class="w-16 h-16 rounded-full bg-white bg-opacity-20 flex items-center justify-center mb-2">
+                    <div class="w-16 h-16 rounded-full bg-black bg-opacity-30 flex items-center justify-center mb-2 border border-blue-900">
                         <i class="fas fa-lightbulb text-2xl"></i>
                     </div>
                     <div class="font-bold">Investment Strategies</div>
@@ -768,28 +770,28 @@
     </section>
 
     <!-- Disclaimer and Disclosure -->
-    <footer class="py-8 bg-gray-100">
+    <footer class="py-8 dark-gradient">
         <div class="container mx-auto px-4">
-            <h3 class="text-lg font-bold mb-4 text-gray-700 text-center">Risk Disclosure</h3>
-            <div class="max-w-4xl mx-auto mb-6 bg-white p-6 rounded-lg shadow-sm">
-                <p class="text-sm text-gray-600 mb-4">
+            <h3 class="text-lg font-bold mb-4 text-white text-center">Risk Disclosure</h3>
+            <div class="max-w-4xl mx-auto mb-6 bg-black bg-opacity-50 p-6 rounded-lg border border-gray-700">
+                <p class="text-sm text-gray-300 mb-4">
                     <strong>IMPORTANT RISK DISCLOSURE:</strong> Investing in securities involves risks, and there is always the potential of losing money when you invest in securities. Past performance is not a guarantee of future results. The information provided is for educational and informational purposes only and should not be construed as investment advice.
                 </p>
                 
-                <p class="text-sm text-gray-600 mb-4">
+                <p class="text-sm text-gray-300 mb-4">
                     <strong>Not a Registered Investment Advisor:</strong> We are not registered investment advisors, and the information provided does not constitute professional financial advice. Always conduct your own research and consult with a qualified professional before making investment decisions.
                 </p>
                 
-                <p class="text-sm text-gray-600 mb-4">
+                <p class="text-sm text-gray-300 mb-4">
                     <strong>Performance Claims:</strong> Any performance results described are not typical and will vary between individuals. The market is unpredictable, and individual results will differ based on various factors including timing, market conditions, and individual financial situations.
                 </p>
                 
-                <p class="text-sm text-gray-600">
+                <p class="text-sm text-gray-300">
                     <strong>Securities Disclosure:</strong> The owner(s) of this website may purchase, hold, or sell securities discussed before, during, or after publication of content on this site. No content should be interpreted as a recommendation to buy, sell, or hold any security. The decision to buy, sell, or hold any security mentioned in the content is solely at the discretion of the individual investor.
                 </p>
             </div>
             
-            <div class="text-xs text-gray-500 text-center">
+            <div class="text-xs text-gray-400 text-center">
                 © 2023 Stock Analysis Group. All Rights Reserved.
             </div>
         </div>
