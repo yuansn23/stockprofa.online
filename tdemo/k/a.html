@@ -1,0 +1,590 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>
+You can make an appointment anytime, anywhere</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        pink: {
+                            light: '#FF70E5',
+                            DEFAULT: '#FF2ED2',
+                            dark: '#D800AA',
+                        },
+                        purple: {
+                            light: '#A170FF',
+                            DEFAULT: '#8A2EFF',
+                            dark: '#6300E0',
+                        },
+                        teal: '#00EEFF',
+                        yellow: '#FFDD00',
+                        cyan: '#00F7FF',
+                    },
+                    animation: {
+                        'pulse-fast': 'pulse 1.5s cubic-bezier(0.4, 0, 0.6, 1) infinite',
+                        'float': 'float 3s ease-in-out infinite',
+                        'float-reverse': 'floatReverse 4s ease-in-out infinite',
+                        'float-slow': 'float 6s ease-in-out infinite',
+                        'glow': 'glow 2s ease-in-out infinite',
+                        'color-shift': 'colorShift 10s infinite',
+                        'spin-slow': 'spin 12s linear infinite',
+                        'bounce-slow': 'bounce 2s infinite',
+                        'shimmer': 'shimmer 2s infinite',
+                    },
+                    keyframes: {
+                        float: {
+                            '0%, 100%': { transform: 'translateY(0)' },
+                            '50%': { transform: 'translateY(-10px)' },
+                        },
+                        floatReverse: {
+                            '0%, 100%': { transform: 'translateY(0)' },
+                            '50%': { transform: 'translateY(10px)' },
+                        },
+                        glow: {
+                            '0%, 100%': { boxShadow: '0 0 15px rgba(255, 46, 210, 0.8), 0 0 30px rgba(255, 46, 210, 0.6)' },
+                            '50%': { boxShadow: '0 0 25px rgba(138, 46, 255, 0.8), 0 0 40px rgba(138, 46, 255, 0.6)' },
+                        },
+                        colorShift: {
+                            '0%, 100%': { borderColor: '#FF2ED2' },
+                            '50%': { borderColor: '#8A2EFF' },
+                        },
+                        shimmer: {
+                            '0%': { backgroundPosition: '-200% 0' },
+                            '100%': { backgroundPosition: '200% 0' },
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap');
+        
+        body {
+            font-family: 'Poppins', sans-serif;
+            background: linear-gradient(135deg, #0E0220 0%, #1A0536 100%);
+            color: white;
+            overflow-x: hidden;
+        }
+        
+        .hero-gradient {
+            background: radial-gradient(circle at center, rgba(255, 46, 210, 0.15) 0%, rgba(26, 5, 54, 0) 70%);
+        }
+        
+        .shimmer-text {
+            background: linear-gradient(90deg, 
+                rgba(255, 112, 229, 0.7) 0%, 
+                rgba(161, 112, 255, 0.9) 20%,
+                rgba(0, 247, 255, 0.8) 40%, 
+                rgba(161, 112, 255, 0.9) 60%, 
+                rgba(255, 112, 229, 0.7) 80%,
+                rgba(161, 112, 255, 0.9) 100%);
+            background-size: 200% auto;
+            -webkit-background-clip: text;
+            background-clip: text;
+            -webkit-text-fill-color: transparent;
+            animation: shimmer 5s linear infinite;
+        }
+        
+        .bg-grid {
+            background-image: 
+                radial-gradient(#FF2ED2 1px, transparent 1px), 
+                radial-gradient(#8A2EFF 1px, transparent 1px);
+            background-size: 30px 30px;
+            background-position: 0 0, 15px 15px;
+            opacity: 0.1;
+        }
+        
+        .neon-text {
+            text-shadow: 
+                0 0 5px rgba(255, 46, 210, 0.8),
+                0 0 10px rgba(255, 46, 210, 0.5),
+                0 0 15px rgba(255, 46, 210, 0.3);
+        }
+        
+        .neon-text-purple {
+            text-shadow: 
+                0 0 5px rgba(138, 46, 255, 0.8),
+                0 0 10px rgba(138, 46, 255, 0.5),
+                0 0 15px rgba(138, 46, 255, 0.3);
+        }
+        
+        .neon-text-cyan {
+            text-shadow: 
+                0 0 5px rgba(0, 247, 255, 0.8),
+                0 0 10px rgba(0, 247, 255, 0.5),
+                0 0 15px rgba(0, 247, 255, 0.3);
+        }
+        
+        .image-glow {
+            box-shadow: 
+                0 0 15px rgba(255, 46, 210, 0.5),
+                0 0 30px rgba(138, 46, 255, 0.3);
+        }
+        
+        .glass-card {
+            background: rgba(26, 5, 54, 0.5);
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 46, 210, 0.2);
+            box-shadow: 0 8px 32px rgba(138, 46, 255, 0.3);
+        }
+        
+        .gradient-border {
+            position: relative;
+            border-radius: inherit;
+        }
+        
+        .gradient-border::before {
+            content: "";
+            position: absolute;
+            inset: -2px;
+            border-radius: inherit;
+            padding: 2px;
+            background: linear-gradient(45deg, #FF2ED2, #8A2EFF, #00EEFF, #FF2ED2);
+            background-size: 400% 400%;
+            animation: gradient 10s ease infinite;
+            -webkit-mask: 
+                linear-gradient(#fff 0 0) content-box, 
+                linear-gradient(#fff 0 0);
+            -webkit-mask-composite: xor;
+            mask-composite: exclude;
+        }
+        
+        @keyframes gradient {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+        
+        .btn-neon {
+            background: linear-gradient(90deg, #FF2ED2, #8A2EFF);
+            border: none;
+            color: white;
+            font-weight: bold;
+            position: relative;
+            z-index: 1;
+            overflow: hidden;
+            transition: all 0.3s ease;
+            transform: translateZ(0);
+        }
+        
+        .btn-neon:hover {
+            transform: translateY(-3px);
+            box-shadow: 
+                0 0 10px rgba(255, 46, 210, 0.8), 
+                0 0 20px rgba(138, 46, 255, 0.4);
+        }
+        
+        .btn-neon::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, #8A2EFF, #00EEFF);
+            z-index: -1;
+            transition: opacity 0.3s ease;
+            opacity: 0;
+        }
+        
+        .btn-neon:hover::before {
+            opacity: 1;
+        }
+        
+        .whatsapp-icon {
+            position: fixed;
+            right: 20px;
+            top: 50%;
+            transform: translateY(-50%);
+            width: 60px;
+            height: 60px;
+            background: linear-gradient(135deg, #25D366, #128C7E);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            z-index: 1000;
+            animation: glow 2s ease-in-out infinite;
+        }
+        
+        .notification {
+            position: absolute;
+            top: -5px;
+            right: -5px;
+            width: 22px;
+            height: 22px;
+            background-color: #FF2ED2;
+            border-radius: 50%;
+            color: white;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 12px;
+            font-weight: bold;
+            border: 2px solid white;
+            box-shadow: 0 0 8px rgba(255, 46, 210, 0.6);
+        }
+        
+        .profile-card {
+            transition: all 0.3s ease;
+            position: relative;
+            z-index: 1;
+            overflow: hidden;
+        }
+        
+        .profile-card:hover {
+            transform: translateY(-10px);
+        }
+        
+        .profile-card::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(to top, rgba(26, 5, 54, 0.9) 0%, rgba(26, 5, 54, 0.5) 40%, rgba(26, 5, 54, 0) 100%);
+            z-index: -1;
+            border-radius: inherit;
+        }
+        
+        .profile-image {
+            transition: all 0.5s ease;
+        }
+        
+        .profile-card:hover .profile-image {
+            transform: scale(1.05);
+        }
+        
+        .particle {
+            position: absolute;
+            border-radius: 50%;
+            pointer-events: none;
+        }
+        
+        .hero-profile {
+            transform-style: preserve-3d;
+            transition: all 0.5s ease;
+            position: relative;
+        }
+        
+        .hero-profile:hover {
+            transform: rotateY(10deg);
+        }
+        
+        .hero-profile::before {
+            content: '';
+            position: absolute;
+            top: -10px;
+            left: -10px;
+            right: -10px;
+            bottom: -10px;
+            background: linear-gradient(45deg, #FF2ED2, #8A2EFF, #00EEFF);
+            border-radius: 20px;
+            z-index: -1;
+            filter: blur(15px);
+            opacity: 0.7;
+            animation: gradient 10s ease infinite;
+            background-size: 200% 200%;
+        }
+        
+        @keyframes appear {
+            0% { opacity: 0; transform: translateY(20px); }
+            100% { opacity: 1; transform: translateY(0); }
+        }
+        
+        .appear {
+            animation: appear 0.8s forwards;
+        }
+        
+        .hero-carousel {
+            position: relative;
+            overflow: hidden;
+            height: 500px;
+            border-radius: 20px;
+        }
+        
+        .carousel-item {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            opacity: 0;
+            transition: opacity 1s ease-in-out;
+        }
+        
+        .carousel-item.active {
+            opacity: 1;
+        }
+        
+        .glow-line {
+            height: 2px;
+            background: linear-gradient(90deg, transparent, #FF2ED2, #8A2EFF, transparent);
+        }
+        
+        .text-shadow-dark {
+            text-shadow: 0 1px 3px rgba(0, 0, 0, 0.8);
+        }
+        
+        .name-badge {
+            background: rgba(255, 46, 210, 0.3);
+            backdrop-filter: blur(5px);
+            -webkit-backdrop-filter: blur(5px);
+            border: 1px solid rgba(255, 46, 210, 0.3);
+        }
+    </style>
+</head>
+<body>
+    <!-- WhatsApp Fixed Icon -->
+    <div class="whatsapp-icon animate-pulse-fast" onclick="openSite()">
+        <i class="fab fa-whatsapp text-white text-3xl"></i>
+        <div class="notification">1</div>
+    </div>
+
+    <div class="relative">
+        <!-- Background Elements -->
+        <div class="absolute inset-0 bg-grid pointer-events-none"></div>
+        
+        <!-- Background Particles -->
+        <div class="particle w-32 h-32 bg-pink-dark/20 top-20 left-20 blur-3xl animate-float-slow"></div>
+        <div class="particle w-40 h-40 bg-purple-dark/20 bottom-20 right-20 blur-3xl animate-float-reverse"></div>
+        <div class="particle w-16 h-16 bg-cyan/10 top-1/2 left-1/3 blur-2xl animate-spin-slow"></div>
+        <div class="particle w-24 h-24 bg-pink/10 top-1/4 right-1/3 blur-2xl animate-float"></div>
+        
+        <!-- Hero Section -->
+        <div class="hero-gradient min-h-screen flex items-center py-10">
+            <div class="container mx-auto px-4 relative z-10">
+                <!-- Hero Header -->
+                <div class="text-center mb-12 appear" style="animation-delay: 0.1s;">
+                    <h1 class="text-5xl md:text-7xl font-bold mb-4 shimmer-text leading-tight">
+                        Want to date her? 
+                    </h1>
+                    <div class="glow-line max-w-md mx-auto mb-6"></div>
+                    <p class="text-xl md:text-2xl text-gray-300 max-w-2xl mx-auto neon-text-cyan">
+                        Here you'll find many high-quality women eager to share their experiences and create beautiful moments together.
+                    </p>
+                </div>
+                
+                <!-- Hero Showcase -->
+                <div class="flex flex-col md:flex-row gap-6 md:gap-10 items-center">
+                    <!-- Featured Profile -->
+                    <div class="md:w-1/2 appear" style="animation-delay: 0.3s;">
+                        <div class="hero-profile rounded-3xl overflow-hidden">
+                            <img src="img/s1.jpg" alt="Featured Profile" class="w-full h-auto rounded-3xl">
+                            <div class="absolute bottom-0 left-0 w-full p-6 bg-gradient-to-t from-purple-dark/90 to-transparent">
+                                <div class="flex justify-between items-center mb-2">
+                                    <h2 class="text-3xl font-bold text-white neon-text">Bonnie</h2>
+                                    <span class="bg-pink px-3 py-1 rounded-full text-sm font-bold">24 years</span>
+                                </div>
+                                <p class="text-white text-lg mb-4">
+                                    You can make an appointment anytime, anywhere.
+                                </p>
+                                <button onclick="openSite()" class="btn-neon w-full py-4 rounded-full text-lg animate-pulse-fast flex items-center justify-center">
+                                    <i class="fab fa-whatsapp mr-2 text-xl"></i>
+                                    Message Me Now
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Quick Previews -->
+                    <div class="md:w-1/2 grid grid-cols-2 gap-4 appear" style="animation-delay: 0.5s;">
+                        <div class="glass-card rounded-2xl overflow-hidden group">
+                            <div class="relative h-48 overflow-hidden">
+                                <img src="img/1.jpg" alt="Adele" class="w-full h-full object-cover transition-all duration-500 group-hover:scale-110">
+                                <div class="absolute bottom-0 left-0 w-full p-3">
+                                    <div class="name-badge px-2 py-1 rounded-lg inline-block">
+                                        <h3 class="text-xl font-bold text-white text-shadow-dark">Adele, 23</h3>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="glass-card rounded-2xl overflow-hidden group">
+                            <div class="relative h-48 overflow-hidden">
+                                <img src="img/s2.jpg" alt="Claire" class="w-full h-full object-cover transition-all duration-500 group-hover:scale-110">
+                                <div class="absolute bottom-0 left-0 w-full p-3">
+                                    <div class="name-badge px-2 py-1 rounded-lg inline-block">
+                                        <h3 class="text-xl font-bold text-white text-shadow-dark">Claire, 25</h3>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="glass-card rounded-2xl overflow-hidden group">
+                            <div class="relative h-48 overflow-hidden">
+                                <img src="img/5.jpg" alt="Debby" class="w-full h-full object-cover transition-all duration-500 group-hover:scale-110">
+                                <div class="absolute bottom-0 left-0 w-full p-3">
+                                    <div class="name-badge px-2 py-1 rounded-lg inline-block">
+                                        <h3 class="text-xl font-bold text-white text-shadow-dark">Debby, 26</h3>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="glass-card rounded-2xl overflow-hidden group">
+                            <div class="relative h-48 overflow-hidden">
+                                <img src="img/s3.jpg" alt="Adela" class="w-full h-full object-cover transition-all duration-500 group-hover:scale-110">
+                                <div class="absolute bottom-0 left-0 w-full p-3">
+                                    <div class="name-badge px-2 py-1 rounded-lg inline-block">
+                                        <h3 class="text-xl font-bold text-white text-shadow-dark">Adela, 25</h3>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- CTA Button -->
+                <div class="text-center mt-12 appear" style="animation-delay: 0.7s;">
+                    <button onclick="openSite()" class="btn-neon px-10 py-5 rounded-full text-xl inline-flex items-center animate-pulse-fast">
+                        <i class="fab fa-whatsapp mr-3 text-2xl"></i>
+                        contact me
+                    </button>
+                </div>
+            </div>
+        </div>
+        
+        <div class="container mx-auto px-4 py-10 relative z-10">
+            <!-- Profiles Section -->
+            <div class="text-center mb-12">
+                <h2 class="text-3xl md:text-4xl font-bold mb-6 neon-text">
+                    <span class="bg-gradient-to-r from-pink to-purple text-transparent bg-clip-text">You can make an appointment anytime, anywhere</span>
+                </h2>
+                <p class="text-xl text-gray-300 max-w-2xl mx-auto">
+                    Discover unique personalities and create meaningful connections
+                </p>
+            </div>
+            
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 mb-12">
+                <!-- Profile 1 -->
+                <div class="glass-card rounded-2xl overflow-hidden profile-card">
+                    <div class="relative h-80 overflow-hidden">
+                        <img src="img/s5.jpg" alt="Adela" class="w-full h-full object-cover profile-image">
+                    </div>
+                    <div class="p-6">
+                        <div class="flex justify-between items-center mb-3">
+                            <h2 class="text-2xl font-bold text-white">Amity</h2>
+                            <span class="bg-pink/20 text-pink px-3 py-1 rounded-full text-sm">21 years</span>
+                        </div>
+                        <p class="text-gray-300 mb-4">
+                            Every journey has a story, and I look forward to sharing the joy of travel with you.
+                        </p>
+                        <button onclick="openSite()" class="btn-neon w-full py-3 rounded-full animate-pulse-fast flex items-center justify-center">
+                            <i class="fab fa-whatsapp mr-2"></i>
+                            Contact on WhatsApp
+                        </button>
+                    </div>
+                </div>
+                
+                <!-- Profile 2 -->
+                <div class="glass-card rounded-2xl overflow-hidden profile-card">
+                    <div class="relative h-80 overflow-hidden">
+                        <img src="img/s4.jpg" alt="Adele" class="w-full h-full object-cover profile-image">
+                    </div>
+                    <div class="p-6">
+                        <div class="flex justify-between items-center mb-3">
+                            <h2 class="text-2xl font-bold text-white">Camille</h2>
+                            <span class="bg-pink/20 text-pink px-3 py-1 rounded-full text-sm">23 years</span>
+                        </div>
+                        <p class="text-gray-300 mb-4">
+                            I love exploring new places. Come share your travel stories with me!
+                        </p>
+                        <button onclick="openSite()" class="btn-neon w-full py-3 rounded-full animate-pulse-fast flex items-center justify-center">
+                            <i class="fab fa-whatsapp mr-2"></i>
+                            Contact on WhatsApp
+                        </button>
+                    </div>
+                </div>
+                
+                
+                
+                <!-- Profile 4 -->
+                <div class="glass-card rounded-2xl overflow-hidden profile-card">
+                    <div class="relative h-80 overflow-hidden">
+                        <img src="img/3.jpg" alt="Claire" class="w-full h-full object-cover profile-image">
+                    </div>
+                    <div class="p-6">
+                        <div class="flex justify-between items-center mb-3">
+                            <h2 class="text-2xl font-bold text-white">Dana</h2>
+                            <span class="bg-pink/20 text-pink px-3 py-1 rounded-full text-sm">22 years</span>
+                        </div>
+                        <p class="text-gray-300 mb-4">
+                            Let's share stories from the depths of our hearts.
+                        </p>
+                        <button onclick="openSite()" class="btn-neon w-full py-3 rounded-full animate-pulse-fast flex items-center justify-center">
+                            <i class="fab fa-whatsapp mr-2"></i>
+                            Contact on WhatsApp
+                        </button>
+                    </div>
+                </div>
+                
+                <!-- Profile 5 -->
+                <div class="glass-card rounded-2xl overflow-hidden profile-card">
+                    <div class="relative h-80 overflow-hidden">
+                        <img src="img/6.jpg" alt="Debby" class="w-full h-full object-cover profile-image">
+                    </div>
+                    <div class="p-6">
+                        <div class="flex justify-between items-center mb-3">
+                            <h2 class="text-2xl font-bold text-white">Doris</h2>
+                            <span class="bg-pink/20 text-pink px-3 py-1 rounded-full text-sm">24 years</span>
+                        </div>
+                        <p class="text-gray-300 mb-4">
+                            I love sharing and listening, and I want to know your life story.
+                        </p>
+                        <button onclick="openSite()" class="btn-neon w-full py-3 rounded-full animate-pulse-fast flex items-center justify-center">
+                            <i class="fab fa-whatsapp mr-2"></i>
+                            Contact on WhatsApp
+                        </button>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Call to Action -->
+            <div class="text-center">
+                <div class="glass-card p-8 rounded-2xl max-w-2xl mx-auto">
+                    <h2 class="text-3xl font-bold mb-6 neon-text-purple">Ready to Connect?</h2>
+                    <p class="text-gray-300 mb-6">
+                        Contact her and don't miss your date.
+                    </p>
+                    <button onclick="openSite()" class="btn-neon px-10 py-4 rounded-full text-lg animate-pulse-fast">
+                        <i class="fab fa-whatsapp mr-2"></i>
+                        Start Chatting Now
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        function openSite() {
+            window.open("https://api.whatsapp.com/send?phone=YOUR_PHONE_NUMBER", "_blank");
+        }
+        
+        // Add appear animation when elements enter viewport
+        document.addEventListener('DOMContentLoaded', function() {
+            const animatedElements = document.querySelectorAll('.appear');
+            
+            animatedElements.forEach(element => {
+                element.style.opacity = '0';
+            });
+            
+            setTimeout(() => {
+                animatedElements.forEach(element => {
+                    element.style.opacity = '1';
+                });
+            }, 100);
+        });
+    </script>
+</body>
+</html>
