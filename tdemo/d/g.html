@@ -1,0 +1,527 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>Vibrant Affluence | Investmentgemeinschaft</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        deep: '#0A0A0A',
+                        darker: '#121212',
+                        dark: '#1A1A1A',
+                        gold: '#FFD700',
+                        goldLight: '#FFDF33',
+                        goldDark: '#E6C200',
+                    },
+                    animation: {
+                        'pulse-slow': 'pulse 3s cubic-bezier(0.4, 0, 0.6, 1) infinite',
+                        'glow': 'glow 2s ease-in-out infinite alternate',
+                        'float': 'float 6s ease-in-out infinite',
+                    },
+                    keyframes: {
+                        glow: {
+                            '0%': { boxShadow: '0 0 5px rgba(255, 215, 0, 0.5), 0 0 15px rgba(255, 215, 0, 0.5)' },
+                            '100%': { boxShadow: '0 0 10px rgba(255, 215, 0, 0.7), 0 0 30px rgba(255, 215, 0, 0.7)' }
+                        },
+                        float: {
+                            '0%, 100%': { transform: 'translateY(0)' },
+                            '50%': { transform: 'translateY(-10px)' },
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap');
+        
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #0A0A0A;
+            color: #FFFFFF;
+        }
+        
+        .hero-gradient {
+            background: linear-gradient(135deg, #0A0A0A 0%, #1A1A1A 100%);
+        }
+        
+        .gold-gradient {
+            background: linear-gradient(90deg, #FFD700, #FFDF33);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+        
+        .whatsapp-fixed {
+            position: fixed;
+            right: 20px;
+            top: 50%;
+            transform: translateY(-50%);
+            z-index: 1000;
+        }
+        
+        .notification-badge {
+            position: absolute;
+            top: -5px;
+            right: -5px;
+            background: linear-gradient(90deg, #FFD700, #FFDF33);
+            color: #0A0A0A;
+            border-radius: 50%;
+            width: 22px;
+            height: 22px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 12px;
+            font-weight: bold;
+            box-shadow: 0 0 10px rgba(255, 215, 0, 0.5);
+        }
+        
+        .floating-button {
+            position: fixed;
+            bottom: 20px;
+            left: 50%;
+            transform: translateX(-50%);
+            z-index: 1000;
+            background: linear-gradient(90deg, #FFD700, #FFDF33);
+            color: #0A0A0A;
+            font-weight: bold; 
+            padding: 0.875rem 2rem;
+            border-radius: 8px;
+            width: 450px;
+            white-space: nowrap;
+            text-align: center;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            animation: glow 2s ease-in-out infinite alternate;
+        }
+        
+        .btn-gold {
+            background: linear-gradient(90deg, #FFD700, #FFDF33);
+            color: #0A0A0A;
+            font-weight: bold;
+            padding: 0.875rem 1.5rem;
+            border-radius: 8px;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 10px rgba(255, 215, 0, 0.3);
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .btn-gold:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 20px rgba(255, 215, 0, 0.5);
+        }
+        
+        .btn-gold::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, 
+                rgba(255, 255, 255, 0) 0%, 
+                rgba(255, 255, 255, 0.3) 50%, 
+                rgba(255, 255, 255, 0) 100%);
+            transform: translateX(-100%);
+            transition: transform 0.6s ease;
+        }
+        
+        .btn-gold:hover::after {
+            transform: translateX(100%);
+        }
+        
+        .glass-card {
+            background: rgba(26, 26, 26, 0.6);
+            border-radius: 16px;
+            box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+            border: 1px solid rgba(255, 215, 0, 0.1);
+            transition: all 0.3s ease;
+        }
+        
+        .glass-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 30px rgba(255, 215, 0, 0.1);
+        }
+        
+        .testimonial-card {
+            background: rgba(26, 26, 26, 0.4);
+            border-radius: 16px;
+            box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+            border: 1px solid rgba(255, 215, 0, 0.1);
+            transition: all 0.3s ease;
+        }
+        
+        .testimonial-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 30px rgba(255, 215, 0, 0.1);
+        }
+        
+        .glow-border {
+            position: relative;
+        }
+        
+        .glow-border::before {
+            content: '';
+            position: absolute;
+            inset: -2px;
+            background: linear-gradient(90deg, #FFD700, #FFDF33);
+            border-radius: 17px;
+            z-index: -1;
+            opacity: 0.3;
+            transition: opacity 0.3s ease;
+        }
+        
+        .glow-border:hover::before {
+            opacity: 0.7;
+        }
+        
+        .features-list li {
+            position: relative;
+            padding-left: 2rem;
+            margin-bottom: 1rem;
+        }
+        
+        .features-list li::before {
+            content: '';
+            position: absolute;
+            left: 0;
+            top: 0.5rem;
+            width: 1rem;
+            height: 1rem;
+            background: linear-gradient(90deg, #FFD700, #FFDF33);
+            border-radius: 50%;
+        }
+        
+        .spotlight {
+            position: absolute;
+            width: 600px;
+            height: 600px;
+            border-radius: 50%;
+            background: radial-gradient(circle, rgba(255, 215, 0, 0.1) 0%, rgba(10, 10, 10, 0) 70%);
+            pointer-events: none;
+            z-index: 0;
+        }
+        
+        .limited-badge {
+            background: linear-gradient(90deg, #FFD700, #FFDF33);
+            color: #0A0A0A;
+            padding: 0.25rem 0.75rem;
+            border-radius: 9999px;
+            font-weight: 600;
+            font-size: 0.875rem;
+            display: inline-block;
+            margin-bottom: 1rem;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+    </style>
+</head>
+<body>
+    
+    
+    <!-- Floating Bottom Button -->
+    <div class="floating-button" onclick="openSite()">
+        <i class="fab fa-whatsapp mr-2"></i> Jetzt der WhatsApp-Gemeinschaft beitreten
+    </div>
+
+    <!-- Hero Section -->
+    <section class="hero-gradient min-h-screen flex items-center relative">
+        <div class="spotlight" style="top: 10%; left: 10%;"></div>
+        <div class="spotlight" style="bottom: 10%; right: 10%;"></div>
+        
+        <div class="container mx-auto px-4 py-20 relative z-10">
+            <div class="flex flex-col lg:flex-row items-center gap-12">
+                <!-- Left Content -->
+                <div class="lg:w-1/2 order-2 lg:order-1">
+                    <div class="limited-badge animate-pulse">NUR NOCH 30 PLÄTZE VERFÜGBAR</div>
+                    <h1 class="text-4xl lg:text-6xl font-bold mb-6 leading-tight">
+                        Vibrant Affluence: <span class="gold-gradient">Die führende WhatsApp-Gemeinschaft</span> für Anleger
+                    </h1>
+                    <p class="text-lg text-gray-300 mb-8">
+                        Willkommen bei Vibrant Affluence, einer Lern- und Austauschplattform mit über 27.229 erfahrenen Anlegern. Hier erhalten Sie Börsenwissen, verbessern Ihr Denken und Ihre Wahrnehmung und nehmen an tiefgreifenden Aktiendisskussionen teil, die Ihnen helfen, fundiertere Anlageentscheidungen zu treffen.
+                    </p>
+                    
+                    <div class="flex flex-wrap gap-6 mb-8">
+                        <div class="flex items-center">
+                            <div class="w-12 h-12 rounded-full bg-gold flex items-center justify-center mr-4">
+                                <svg class="w-6 h-6 text-deep" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4.354a4 4 0 110 5.292M15 21H3v-1a6 6 0 0112 0v1zm0 0h6v-1a6 6 0 00-9-5.197M13 7a4 4 0 11-8 0 4 4 0 018 0z"></path>
+                                </svg>
+                            </div>
+                            <div>
+                                <h3 class="text-white font-bold">27.229+</h3>
+                                <p class="text-gray-400 text-sm">Mitglieder</p>
+                            </div>
+                        </div>
+                        
+                        <div class="flex items-center">
+                            <div class="w-12 h-12 rounded-full bg-gold flex items-center justify-center mr-4">
+                                <svg class="w-6 h-6 text-deep" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"></path>
+                                </svg>
+                            </div>
+                            <div>
+                                <h3 class="text-white font-bold">Täglich</h3>
+                                <p class="text-gray-400 text-sm">Aktive Diskussionen</p>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <button onclick="openSite()" class="btn-gold text-lg w-full md:w-auto">
+                        <i class="fab fa-whatsapp mr-2"></i> Kostenlos beitreten
+                    </button>
+                </div>
+                
+                <!-- Right Image -->
+                <div class="lg:w-1/2 order-1 lg:order-2">
+                    <div class="relative overflow-hidden rounded-2xl glow-border animate-float">
+                        <img src="img/1.jpg" alt="Vibrant Affluence Gemeinschaft" class="w-full h-auto rounded-2xl">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Community Section -->
+    <section class="bg-darker py-20 relative">
+        <div class="container mx-auto px-4 relative z-10">
+            <div class="flex flex-col lg:flex-row items-center gap-16">
+                <!-- Left Image -->
+                <div class="lg:w-1/2 mb-10 lg:mb-0">
+                    <div class="relative overflow-hidden rounded-2xl glow-border">
+                        <img src="img/3.jpg" alt="Über unsere Gemeinschaft" class="w-full h-auto rounded-2xl transform hover:scale-105 transition-all duration-700">
+                    </div>
+                </div>
+                
+                <!-- Right Content -->
+                <div class="lg:w-1/2">
+                    <h2 class="text-3xl lg:text-5xl font-bold mb-6">
+                        Über unsere <span class="gold-gradient">Gemeinschaft</span>
+                    </h2>
+                    
+                    <p class="text-lg text-gray-300 mb-6">
+                        Vibrant Affluence ist eine Gemeinschaft, die Experten aus den Bereichen Finanzen, Technologie und Datenwissenschaft zusammenbringt. Wir glauben, dass wir durch Bildung und Wissensaustausch jedem Mitglied zum Erfolg auf den globalen Finanzmärkten verhelfen können.
+                    </p>
+                    
+                    <p class="text-lg text-gray-300 mb-8">
+                        Treten Sie uns bei und werden Sie Teil eines Teams voller Leidenschaft, Weisheit und Weitblick, das gemeinsam die Tiefe und Breite des Investierens erforscht.
+                    </p>
+                    
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-8">
+                        <div class="glass-card p-6 text-center">
+                            <div class="w-16 h-16 rounded-full bg-gold mx-auto flex items-center justify-center mb-4">
+                                <svg class="w-8 h-8 text-deep" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z"></path>
+                                </svg>
+                            </div>
+                            <h3 class="text-xl font-bold mb-2 text-gold">Wissensaustausch</h3>
+                            <p class="text-gray-400">
+                                Lernen Sie von erfahrenen Anlegern und erweitern Sie Ihr Verständnis der Märkte
+                            </p>
+                        </div>
+                        
+                        <div class="glass-card p-6 text-center">
+                            <div class="w-16 h-16 rounded-full bg-gold mx-auto flex items-center justify-center mb-4">
+                                <svg class="w-8 h-8 text-deep" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z"></path>
+                                </svg>
+                            </div>
+                            <h3 class="text-xl font-bold mb-2 text-gold">Gemeinschaft</h3>
+                            <p class="text-gray-400">
+                                Verbinden Sie sich mit Gleichgesinnten und tauschen Sie Ideen in einer unterstützenden Umgebung aus
+                            </p>
+                        </div>
+                    </div>
+                    
+                    <button onclick="openSite()" class="btn-gold text-lg w-full md:w-auto">
+                        <i class="fab fa-whatsapp mr-2"></i> Der Gemeinschaft beitreten
+                    </button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Community Atmosphere Section -->
+    <section class="bg-deep py-20">
+        <div class="container mx-auto px-4">
+            <div class="max-w-4xl mx-auto text-center mb-16">
+                <h2 class="text-3xl lg:text-5xl font-bold mb-6">
+                    Unsere <span class="gold-gradient">Gemeinschaftsatmosphäre</span>
+                </h2>
+                <p class="text-lg text-gray-300">
+                    Unsere Gemeinschaft legt Wert auf Bildung und rationalen Austausch, mit dem Ziel, jedem Mitglied ein tiefes Verständnis der Marktdynamik zu vermitteln.
+                </p>
+            </div>
+            
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8 mb-16">
+                <div class="glass-card p-8 glow-border">
+                    <div class="w-16 h-16 rounded-full bg-gold mx-auto flex items-center justify-center mb-6">
+                        <svg class="w-8 h-8 text-deep" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z"></path>
+                        </svg>
+                    </div>
+                    <h3 class="text-xl font-bold mb-4 text-gold text-center">Unabhängiges Denken</h3>
+                    <p class="text-gray-300 text-center">
+                        Bewahren Sie bei Anlageentscheidungen eine rationale Analyse und vermeiden Sie blinde Nachfolge.
+                    </p>
+                </div>
+                
+                <div class="glass-card p-8 glow-border">
+                    <div class="w-16 h-16 rounded-full bg-gold mx-auto flex items-center justify-center mb-6">
+                        <svg class="w-8 h-8 text-deep" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253"></path>
+                        </svg>
+                    </div>
+                    <h3 class="text-xl font-bold mb-4 text-gold text-center">Wissensaustausch</h3>
+                    <p class="text-gray-300 text-center">
+                        Fördern Sie gegenseitiges Wachstum und Lernen durch den Austausch von Erfahrungen und Einsichten.
+                    </p>
+                </div>
+                
+                <div class="glass-card p-8 glow-border">
+                    <div class="w-16 h-16 rounded-full bg-gold mx-auto flex items-center justify-center mb-6">
+                        <svg class="w-8 h-8 text-deep" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+                        </svg>
+                    </div>
+                    <h3 class="text-xl font-bold mb-4 text-gold text-center">Begrenzte Plätze</h3>
+                    <p class="text-gray-300 text-center">
+                        Derzeit sind nur noch 30 Plätze verfügbar. Beeilen Sie sich, um der Gruppe beizutreten!
+                    </p>
+                </div>
+            </div>
+            
+            <div class="max-w-4xl mx-auto">
+                <div class="glass-card p-8 glow-border">
+                    <p class="text-lg text-gray-300 mb-6 text-center">
+                        Wir laden Sie herzlich ein, unserer WhatsApp-Gemeinschaft beizutreten, um gemeinsam mit gleichgesinnten Anlegern zu lernen und zu wachsen.
+                    </p>
+                    
+                    <p class="text-lg text-gray-300 mb-8 text-center">
+                        Nutzen Sie diese Gelegenheit zum Lernen und Austausch, werden Sie Mitglied bei Vibrant Affluence und beginnen Sie Ihre Anlage-Lernreise!
+                    </p>
+                    
+                    <div class="text-center">
+                        <button onclick="openSite()" class="btn-gold text-lg py-4 px-10">
+                            <i class="fab fa-whatsapp mr-2"></i> Kostenlos beitreten
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Testimonials Section -->
+    <section class="bg-darker py-20">
+        <div class="container mx-auto px-4">
+            <div class="max-w-4xl mx-auto text-center mb-16">
+                <h2 class="text-3xl lg:text-5xl font-bold mb-6">
+                    Was unsere <span class="gold-gradient">Mitglieder sagen</span>
+                </h2>
+                <p class="text-lg text-gray-300">
+                    Erfahren Sie, wie unsere Gemeinschaft anderen Anlegern geholfen hat
+                </p>
+            </div>
+            
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8 mb-16">
+                <div class="testimonial-card p-6 glow-border">
+                    <div class="flex items-start mb-4">
+                        <div class="w-12 h-12 rounded-full bg-gold flex items-center justify-center mr-4 text-deep font-bold">M</div>
+                        <div>
+                            <h4 class="font-bold text-lg">Markus H.</h4>
+                            <p class="text-gray-400 text-sm">München</p>
+                        </div>
+                    </div>
+                    <p class="text-gray-300">
+                        "Die Gemeinschaft bietet einen Ort für konstruktiven Austausch und gemeinsames Lernen. Die Erkenntnisse, die ich hier gewonnen habe, haben mein Verständnis der Märkte erheblich verbessert."
+                    </p>
+                </div>
+                
+                <div class="testimonial-card p-6 glow-border">
+                    <div class="flex items-start mb-4">
+                        <div class="w-12 h-12 rounded-full bg-gold flex items-center justify-center mr-4 text-deep font-bold">L</div>
+                        <div>
+                            <h4 class="font-bold text-lg">Lisa K.</h4>
+                            <p class="text-gray-400 text-sm">Berlin</p>
+                        </div>
+                    </div>
+                    <p class="text-gray-300">
+                        "Als Neuling in der Welt der Investitionen hat mir die Unterstützung dieser Gruppe sehr geholfen. Die Mitglieder teilen bereitwillig ihr Wissen und ihre Erfahrungen."
+                    </p>
+                </div>
+                
+                <div class="testimonial-card p-6 glow-border">
+                    <div class="flex items-start mb-4">
+                        <div class="w-12 h-12 rounded-full bg-gold flex items-center justify-center mr-4 text-deep font-bold">T</div>
+                        <div>
+                            <h4 class="font-bold text-lg">Thomas W.</h4>
+                            <p class="text-gray-400 text-sm">Hamburg</p>
+                        </div>
+                    </div>
+                    <p class="text-gray-300">
+                        "Die Qualität der Diskussionen in dieser Gruppe ist außergewöhnlich. Hier geht es nicht um schnelle Tipps, sondern um fundiertes Verständnis der Marktmechanismen."
+                    </p>
+                </div>
+            </div>
+            
+            <div class="text-center">
+                <div class="limited-badge inline-block animate-pulse mb-6">NUR NOCH 30 PLÄTZE</div>
+                <h3 class="text-2xl lg:text-3xl font-bold mb-6">Werden Sie Teil unserer wachsenden Gemeinschaft</h3>
+                <p class="text-lg text-gray-300 mb-8 max-w-2xl mx-auto">
+                    Verpassen Sie nicht die Gelegenheit, sich mit gleichgesinnten Anlegern zu vernetzen und Ihr Wissen zu erweitern
+                </p>
+                <button onclick="openSite()" class="btn-gold text-lg py-4 px-10">
+                    <i class="fab fa-whatsapp mr-2"></i> Jetzt beitreten
+                </button>
+            </div>
+        </div>
+    </section>
+    
+    <!-- Disclaimer Section -->
+    <footer class="bg-deep py-12 text-gray-400">
+        <div class="container mx-auto px-4">
+            <div class="max-w-4xl mx-auto">
+                <h3 class="text-xl font-bold mb-6 text-center text-white">Wichtiger Hinweis</h3>
+                
+                <div class="glass-card p-6 mb-8">
+                    <p class="mb-4 text-sm">
+                        Die in dieser Gemeinschaft bereitgestellten Informationen dienen ausschließlich zu Bildungs- und Informationszwecken. Sie stellen keine Anlageberatung dar und sollten nicht als solche verstanden werden.
+                    </p>
+                    
+                    <p class="mb-4 text-sm">
+                        Jede Art von Investition birgt Risiken, einschließlich des Verlusts des eingesetzten Kapitals. Die Wertentwicklung in der Vergangenheit ist kein Indikator für zukünftige Ergebnisse. Alle Teilnehmer sollten ihre eigene Research betreiben und bei Bedarf professionelle Beratung in Anspruch nehmen, bevor sie Anlageentscheidungen treffen.
+                    </p>
+                    
+                    <p class="mb-4 text-sm">
+                        Unsere Gemeinschaft befürwortet einen bildungsorientierten Ansatz zum Verständnis der Finanzmärkte und fördert den Austausch von Wissen und Erfahrungen. Wir bieten keine personalisierten Anlageempfehlungen und verwalten keine Kundengelder.
+                    </p>
+                    
+                    <p class="text-sm">
+                        Die Teilnahme an der Gemeinschaft ist freiwillig, und jedes Mitglied trägt die volle Verantwortung für seine eigenen finanziellen Entscheidungen. Durch den Beitritt zu unserer Gruppe erklären Sie, dass Sie diese Bedingungen verstanden haben und akzeptieren.
+                    </p>
+                </div>
+                
+                <div class="text-center text-sm">
+                    <p>© 2023 Vibrant Affluence. Alle Rechte vorbehalten.</p>
+                    <p class="mt-2">Diese Gemeinschaft ist unabhängig und nicht mit Finanzinstituten verbunden.</p>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        function openSite() {
+            window.open("https://wa.me/message/example", "_blank");
+        }
+    </script>
+</body>
+</html>
