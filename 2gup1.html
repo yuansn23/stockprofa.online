@@ -11,6 +11,24 @@
 
   gtag('config', 'AW-1065636413');
 </script>
+	<!-- Event snippet for 联系人 (1) conversion page
+In your html page, add the snippet and call gtag_report_conversion when someone clicks on the chosen link or button. -->
+<script>
+function gtag_report_conversion(url) {
+  var callback = function () {
+    if (typeof(url) != 'undefined') {
+      window.location = url;
+    }
+  };
+  gtag('event', 'conversion', {
+      'send_to': 'AW-1065636413/95EUCJGs64UbEL2kkfwD',
+      'value': 1.0,
+      'currency': 'GBP',
+      'event_callback': callback
+  });
+  return false;
+}
+</script>
 	
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
@@ -579,10 +597,7 @@
         
         // WhatsApp redirection
         function opensite() {
-                
-    window.location.href = 'https://www.qq.com';
-
-            closeModal();
+                gtag_report_conversion('https://www.qq.com'); 
         }
         
         // Close modal when clicking outside of it
